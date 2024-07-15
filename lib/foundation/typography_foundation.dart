@@ -4,13 +4,25 @@ import 'package:store_desing_system/tokens/typography_token.dart';
 class StoreTypographyFoundation {
   StoreTypographyFoundation._();
 
+  //fonts
+  static const String familyHeadings = StoreTypographyToken.familyOpenSans;
+  static const String familyBody= StoreTypographyToken.familyRoboto;
+
   // Font Sizes
-  static const double fontSizeXS = StoreTypographyToken.fontSizeExtraSmall;
-  static const double fontSizeS = StoreTypographyToken.fontSizeSmall;
-  static const double fontSizeM = StoreTypographyToken.fontSizeMedium;
-  static const double fontSizeL = StoreTypographyToken.fontSizeLarge;
-  static const double fontSizeXL = StoreTypographyToken.fontSizeExtraLarge;
-  static const double fontSizeXXL = StoreTypographyToken.fontSizeExtraExtraLarge;
+  static const double fontSizeH6 = StoreTypographyToken.fontSizeExtraSmall;
+  static const double fontSizeH5 = StoreTypographyToken.fontSizeSmall;
+  static const double fontSizeH4 = StoreTypographyToken.fontSizeMedium;
+  static const double fontSizeH3 = StoreTypographyToken.fontSizeLarge;
+  static const double fontSizeH2 = StoreTypographyToken.fontSizeExtraLarge;
+  static const double fontSizeH1 = StoreTypographyToken.fontSizeExtraExtraLarge;
+  static const double fontSizeBodyText = StoreTypographyToken.fontSizeExtraSmall;
+  static const double fontSizeLabel = StoreTypographyToken.fontSizeExtraSmall;
+  static const double fontSizeLink = StoreTypographyToken.fontSizeExtraSmall;
+  static const double fontSizeSmall= StoreTypographyToken.fontSizeExtraSmall;
+  static const double fontSizeXSmall = StoreTypographyToken.fontSizeExtraSmall;
+  static const double fontSizeUpSmall = StoreTypographyToken.fontSizeUpperSmall;
+
+
 
   // Font Weights
   static const FontWeight fontWeightLight = StoreTypographyToken.fontWeightLight;

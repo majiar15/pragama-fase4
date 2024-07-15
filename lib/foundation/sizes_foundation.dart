@@ -17,12 +17,14 @@ class StoreSizesFoundation {
   static const double marginXL = StoreSizesToken.marginExtraLarge;
 
   // Heights
+  static const double heightXS = StoreSizesToken.heightExtraSmall;
   static const double heightS = StoreSizesToken.heightSmall;
   static const double heightM = StoreSizesToken.heightMedium;
   static const double heightL = StoreSizesToken.heightLarge;
   static const double heightXL = StoreSizesToken.heightExtraLarge;
 
   // Widths
+  static const double widthXS= StoreSizesToken.widthExtraSmall;
   static const double widthS = StoreSizesToken.widthSmall;
   static const double widthM = StoreSizesToken.widthMedium;
   static const double widthL = StoreSizesToken.widthLarge;
@@ -32,6 +34,7 @@ class StoreSizesFoundation {
   static const double borderRadiusS = StoreSizesToken.borderRadiusSmall;
   static const double borderRadiusM = StoreSizesToken.borderRadiusMedium;
   static const double borderRadiusL = StoreSizesToken.borderRadiusLarge;
+  static const double borderRadiusSL = StoreSizesToken.borderRadiusSmallLarge;
   static const double borderRadiusXL = StoreSizesToken.borderRadiusExtraLarge;
 
   // Elevations

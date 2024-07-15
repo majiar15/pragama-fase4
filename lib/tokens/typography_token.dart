@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 class StoreTypographyToken {
 
   StoreTypographyToken._();
+
+  //fonts
+  static const String familyCorben = 'Corben';
+  static const String familyInter= 'Inter';
+  static const String familyOpenSans= 'OpenSans';
+  static const String familyRoboto= 'Roboto';
+
   // Font Sizes
   static const double fontSizeExtraSmall = 12.0;
   static const double fontSizeSmall = 16.0;
+  static const double fontSizeUpperSmall = 18.0;
   static const double fontSizeMedium = 20.0;
   static const double fontSizeLarge = 24.0;
   static const double fontSizeExtraLarge = 34.0;

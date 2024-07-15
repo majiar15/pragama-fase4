@@ -20,8 +20,7 @@ class CreateAccountTemplate extends StatelessWidget {
       required this.onTapLoginLink,
       this.onChangeUserText = _defaultOnChange,
       this.onChangePasswordText = _defaultOnChange,
-      this.onChangeConfirmPasswordText = _defaultOnChange
-    });
+      this.onChangeConfirmPasswordText = _defaultOnChange});
 
   static void _defaultOnChange(String text) {}
 
@@ -35,122 +34,118 @@ class CreateAccountTemplate extends StatelessWidget {
           body: Padding(
         padding: const EdgeInsets.all(StoreSizesFoundation.paddingM),
         child: SingleChildScrollView(
-          child: Container(
-            height: screenSize.height -( (StoreSizesFoundation.paddingM *2) + paddingTop + paddingBottom ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Crear una",
-                  style: TextStyle(
-                      fontSize: StoreTypographyFoundation.fontSizeH1,
-                      fontWeight: StoreTypographyFoundation.fontWeightBold),
-                ),
-                const Text(
-                  "cuenta",
-                  style: TextStyle(
-                      fontSize: StoreTypographyFoundation.fontSizeH1,
-                      fontWeight: StoreTypographyFoundation.fontWeightBold),
-                ),
-                const SizedBox(
-                  height: StoreSpacingFoundation.lg,
-                ),
-                InputAtom(
-                    iconData: Icons.person,
-                    label: "usuario",
-                    controller: userController,
-                    onChanged: onChangeUserText),
-                const SizedBox(
-                  height: StoreSpacingFoundation.md,
-                ),
-                InputAtom(
-                  iconData: Icons.lock,
-                  label: "Contraseña",
-                  controller: passwordController,
-                  onChanged: onChangePasswordText,
-                  isPassword: true,
-                ),
-                const SizedBox(
-                  height: StoreSpacingFoundation.md,
-                ),
-                InputAtom(
-                  iconData: Icons.lock,
-                  label: "Confirmar Contraseña",
-                  controller: confirmPasswordController,
-                  onChanged: onChangeConfirmPasswordText,
-                  isPassword: true,
-                ),
-                const SizedBox(
-                  height: StoreSpacingFoundation.md,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                        width: screenSize.width * 0.7,
-                        child: RichText(
-                          text: const TextSpan(
-                            text: 'Al hacer clic en el botón ',
-                            style: TextStyle(
-                              color: StoreColorsFoundation.textColor,
-                              fontSize: StoreTypographyFoundation.fontSizeH5,
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'Registrarse',
-                                style: TextStyle(
-                                  color: StoreColorsFoundation.primaryColor,
-                                  fontWeight:
-                                      StoreTypographyFoundation.fontWeightBold,
-                                ),
-                              ),
-                              TextSpan(
-                                text: ', estás de acuerdo con la oferta pública',
-                              ),
-                            ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Crear una",
+                style: TextStyle(
+                    fontSize: StoreTypographyFoundation.fontSizeH1,
+                    fontWeight: StoreTypographyFoundation.fontWeightBold),
+              ),
+              const Text(
+                "cuenta",
+                style: TextStyle(
+                    fontSize: StoreTypographyFoundation.fontSizeH1,
+                    fontWeight: StoreTypographyFoundation.fontWeightBold),
+              ),
+              const SizedBox(
+                height: StoreSpacingFoundation.lg,
+              ),
+              InputAtom(
+                  iconData: Icons.person,
+                  label: "usuario",
+                  controller: userController,
+                  onChanged: onChangeUserText),
+              const SizedBox(
+                height: StoreSpacingFoundation.md,
+              ),
+              InputAtom(
+                iconData: Icons.lock,
+                label: "Contraseña",
+                controller: passwordController,
+                onChanged: onChangePasswordText,
+                isPassword: true,
+              ),
+              const SizedBox(
+                height: StoreSpacingFoundation.md,
+              ),
+              InputAtom(
+                iconData: Icons.lock,
+                label: "Confirmar Contraseña",
+                controller: confirmPasswordController,
+                onChanged: onChangeConfirmPasswordText,
+                isPassword: true,
+              ),
+              const SizedBox(
+                height: StoreSpacingFoundation.md,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                      width: screenSize.width * 0.7,
+                      child: RichText(
+                        text: const TextSpan(
+                          text: 'Al hacer clic en el botón ',
+                          style: TextStyle(
+                            color: StoreColorsFoundation.textColor,
+                            fontSize: StoreTypographyFoundation.fontSizeH5,
                           ),
-                        )),
-                  ],
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'Registrarse',
+                              style: TextStyle(
+                                color: StoreColorsFoundation.primaryColor,
+                                fontWeight:
+                                    StoreTypographyFoundation.fontWeightBold,
+                              ),
+                            ),
+                            TextSpan(
+                              text:
+                                  ', estás de acuerdo con la oferta pública',
+                            ),
+                          ],
+                        ),
+                      )),
+                ],
+              ),
+              const SizedBox(
+                height: StoreSpacingFoundation.xl,
+              ),
+              Center(
+                child: ButtonAtom(
+                  label: "Registrarse",
+                  onPressed: onTapCreateAccount,
                 ),
-
-                Spacer(),
-
-                Center(
-                  child: ButtonAtom(
-                    label: "Registrarse",
-                    onPressed: onTapCreateAccount,
-                  ),
-                ),
-                const SizedBox(
-                  height: StoreSpacingFoundation.lg,
-                ),
-                Row(
-                  children: [
-                    const Text(
-                      "Ya tengo una cuenta",
-                      style: TextStyle(
+              ),
+              const SizedBox(
+                height: StoreSpacingFoundation.lg,
+              ),
+              Row(
+                children: [
+                  const Text(
+                    "Ya tengo una cuenta",
+                    style: TextStyle(
                         fontSize: StoreTypographyFoundation.fontSizeH5,
-                        color: StoreColorsFoundation.textColor
-                      ),
-                    ),
-                    const SizedBox(
-                      width: StoreSpacingFoundation.s,
-                    ),
-                    GestureDetector(
-                      onTap: onTapLoginLink,
-                      child: const Text(
-                        "Ingresar",
-                        style: TextStyle(
+                        color: StoreColorsFoundation.textColor),
+                  ),
+                  const SizedBox(
+                    width: StoreSpacingFoundation.s,
+                  ),
+                  GestureDetector(
+                    onTap: onTapLoginLink,
+                    child: const Text(
+                      "Ingresar",
+                      style: TextStyle(
                           fontSize: StoreTypographyFoundation.fontSizeH5,
                           color: StoreColorsFoundation.primaryColor,
-                          decoration: TextDecoration.underline
-                        ),
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
+                          decoration: TextDecoration.underline),
+                    ),
+                  )
+                ],
+              )
+            ],
           ),
         ),
       )),

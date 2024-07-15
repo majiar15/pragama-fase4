@@ -18,7 +18,7 @@ class ForgotPasswordTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-
+  print(size.width - (StoreSizesFoundation.paddingM * 2));
     return SafeArea(
       child: Scaffold(
           body: Padding(
@@ -53,26 +53,26 @@ class ForgotPasswordTemplate extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
-                      width: size.width * 0.9,
-                      child: RichText(
-                        text: const TextSpan(
-                          text: '*',
-                          style: TextStyle(
-                            color: StoreColorsFoundation.primaryColor,
-                            fontSize: StoreTypographyFoundation.fontSizeH5,
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text:
-                                  ' Le enviaremos un mensaje para configurar o restablecer su nueva contraseña',
-                              style: TextStyle(
-                                color: StoreColorsFoundation.textColor,
-                              ),
-                            ),
-                          ],
+                  Expanded(
+                    child: RichText(
+                      text: const TextSpan(
+                        text: '*',
+                        style: TextStyle(
+                          color: StoreColorsFoundation.primaryColor,
+                          fontSize: StoreTypographyFoundation.fontSizeH5,
                         ),
-                      )),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text:
+                                ' Le enviaremos un mensaje para configurar o restablecer su nueva contraseña',
+                            style: TextStyle(
+                              color: StoreColorsFoundation.textColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(

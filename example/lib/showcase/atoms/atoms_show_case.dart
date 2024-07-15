@@ -104,7 +104,7 @@ class AtomShowCase extends StatelessWidget {
         _buildButtonAtomExample(
           label: 'Change Background Color',
           onPressed: () {},
-          backgroundColor: StoreColorsFoundation.primaryColor,
+          backgroundColor: StoreColorsFoundation.textColor,
         ),
         const SizedBox(height: StoreSpacingFoundation.lg),
         _buildButtonAtomExample(

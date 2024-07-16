@@ -1,0 +1,9 @@
+// template
+export 'templates/login_template.dart';
+export 'templates/create_account_template.dart';
+export 'templates/forgot_password_template.dart';
+export 'templates/home_template.dart';
+export 'templates/product_detail_template.dart';
+export 'templates/catalog_template.dart';
+export 'templates/support_contact_template.dart';
+export 'templates/cart_template.dart';

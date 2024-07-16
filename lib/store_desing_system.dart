@@ -21,6 +21,7 @@ export 'atoms/nav_item_atom.dart';
 export 'atoms/filter_button_atom.dart';
 export 'atoms/sort_button_atom.dart';
 export 'atoms/text_area_atom.dart';
+export 'atoms/dialog_atom.dart';
 
 
 // molecules
@@ -58,9 +59,3 @@ export 'pages/product_detail_page.dart';
 export 'pages/catalog_page.dart';
 export 'pages/support_contact_page.dart';
 export 'pages/cart_page.dart';
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}

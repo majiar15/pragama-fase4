@@ -5,6 +5,7 @@ import 'package:store_desing_system/store_desing_system.dart';
 class LoginTemplate extends StatelessWidget {
   final TextEditingController userController;
   final TextEditingController passwordController;
+  final bool isLoadingButtonLogin;
   void Function(String) onChangeUserText;
   void Function(String) onChangePasswordText;
   void Function() onTapForgotPassword;
@@ -17,6 +18,7 @@ class LoginTemplate extends StatelessWidget {
     required this.onTapForgotPassword,
     required this.onTapLogin,
     required this.onTapSignUp,
+    this.isLoadingButtonLogin = false,
     this.onChangeUserText = _defaultOnChange,
     this.onChangePasswordText = _defaultOnChange
   });
@@ -94,6 +96,7 @@ class LoginTemplate extends StatelessWidget {
                 child: ButtonAtom(
                   label: "Ingresar",
                   onPressed: onTapLogin,
+                  loading: isLoadingButtonLogin,
                 ),
               ),
               const SizedBox(

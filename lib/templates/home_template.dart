@@ -50,8 +50,8 @@ class HomeTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    List<ProductModel> firstPartLst = productList.sublist(0, 4);
-    List<ProductModel> secondPartList = productList.sublist(4);
+    List<ProductModel> firstPartLst = productList.length >= 4 ? productList.sublist(0, 4) : [];
+    List<ProductModel> secondPartList = productList.length >= 4 ? productList.sublist(4) : [];
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(StoreSizesFoundation.paddingM),

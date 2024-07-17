@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/atoms/sort_button_atom.dart';
+import 'package:store_design_system/atoms/sort_button_atom.dart';
 
 class SortMenuMolecule extends StatelessWidget {
   final void Function(String) onSortSelected;

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/foundation/colors_foundation.dart';
-import 'package:store_desing_system/foundation/sizes_foundation.dart';
-import 'package:store_desing_system/foundation/typography_foundation.dart';
-import 'package:store_desing_system/store_desing_system.dart';
-
+import 'package:store_design_system/foundation/colors_foundation.dart';
+import 'package:store_design_system/foundation/sizes_foundation.dart';
+import 'package:store_design_system/foundation/typography_foundation.dart';
+import 'package:store_design_system/store_design_system.dart';
 class CardOrganism extends StatelessWidget {
   final String imageUrl;
   final String title;
   final String description;
   final double originalPrice;
   final int? discountPercentage;
-  final double rating;
-  final int reviews;
+  final double? rating;
+  final int? reviews;
   void Function() onTapCard;
 
   CardOrganism({

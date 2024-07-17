@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/templates/support_contact_template.dart';
+import 'package:store_design_system/templates/support_contact_template.dart';
 
 
 class SupportContactPage extends StatelessWidget {

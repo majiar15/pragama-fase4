@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/models/product_model.dart';
-import 'package:store_desing_system/organisms/filter_sort_organism.dart';
-import 'package:store_desing_system/store_desing_system.dart';
-
+import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel;
+import 'package:store_design_system/store_design_system.dart';
 class CatalogTemplate extends StatefulWidget {
   final List<ProductModel> productList;
   final List<String> categories;
@@ -44,10 +42,10 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
           filteredList.sort((a, b) => b.price.compareTo(a.price));
           break;
         case "reviews_asc":
-          filteredList.sort((a, b) => a.rating.rate.compareTo(b.rating.rate));
+          filteredList.sort((a, b) => a.rating?.rate?.compareTo(b.rating?.rate ?? 0) ?? 0);
           break;
         case "reviews_desc":
-          filteredList.sort((a, b) => b.rating.rate.compareTo(a.rating.rate));
+          filteredList.sort((a, b) => b.rating?.rate?.compareTo(a.rating?.rate ?? 0) ?? 0 );
           break;
       }
     });
@@ -92,23 +90,7 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
               onChanged: _performSearch,
               iconData: Icons.search,
               isPassword: false,
-              
-              // iconData: ,
             ),
-            // TextField(
-            //   controller: _searchController,
-            //   onChanged: _performSearch,
-            //   decoration: InputDecoration(
-            //     hintText: 'Search',
-            //     suffixIcon: IconButton(
-            //       icon: const Icon(Icons.clear),
-            //       onPressed: () {
-            //         _searchController.clear();
-            //         _performSearch('');
-            //       },
-            //     ),
-            //   ),
-            // ),
             const SizedBox(
               height: StoreSpacingFoundation.md,
             ),
@@ -152,8 +134,8 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
                     title: filteredList[i].title,
                     description: filteredList[i].description,
                     originalPrice: filteredList[i].price,
-                    rating: filteredList[i].rating.rate,
-                    reviews: filteredList[i].rating.count,
+                    rating: filteredList[i].rating?.rate,
+                    reviews: filteredList[i].rating?.count,
                      onTapCard: () => Navigator.push(
                         context,
                         MaterialPageRoute(

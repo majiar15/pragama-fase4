@@ -1,6 +1,7 @@
 import 'package:example/main.dart';
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/store_desing_system.dart';
+import 'package:store_design_system/store_design_system.dart';
+import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductCartUIModel;
 
 class OrganismShowcase extends StatelessWidget {
   const OrganismShowcase({super.key});
@@ -63,7 +64,7 @@ CardCartOrganism(
     return ShowCodeExample(
       title: "",
       exampleWidget: CardCartOrganism(
-        product: ProductCartModel(
+        product: ProductCartUIModel(
           image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
           title: 'Product Title',
           price: 19.99,

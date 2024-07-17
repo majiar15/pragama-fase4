@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/store_desing_system.dart';
+import 'package:store_design_system/store_design_system.dart';
+import 'package:flutter_models_commons/flutter_models_commons.dart' show CartUIModel, ProductCartUIModel;
 
 
 class CartTemplateShowCase extends StatelessWidget {
@@ -8,9 +9,9 @@ class CartTemplateShowCase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CartModel cart = CartModel(
+    final CartUIModel cart = CartUIModel(
       products: [
-        ProductCartModel(
+        ProductCartUIModel(
           productId: 1,
           quantity: 2,
           title: "Mens Casual Premium Slim Fit T-Shirts ",
@@ -18,7 +19,7 @@ class CartTemplateShowCase extends StatelessWidget {
           image:
               "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
         ),
-        ProductCartModel(
+        ProductCartUIModel(
           productId: 1,
           quantity: 2,
           title: "Mens C2 ",
@@ -27,7 +28,7 @@ class CartTemplateShowCase extends StatelessWidget {
               "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
         ),
 
-        ProductCartModel(
+        ProductCartUIModel(
           productId: 1,
           quantity: 2,
           title: "Mensq  ",
@@ -35,7 +36,7 @@ class CartTemplateShowCase extends StatelessWidget {
           image:
               "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
         ),
-                ProductCartModel(
+                ProductCartUIModel(
           productId: 1,
           quantity: 2,
           title: "Mensq  ",
@@ -43,7 +44,7 @@ class CartTemplateShowCase extends StatelessWidget {
           image:
               "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
         ),
-                ProductCartModel(
+                ProductCartUIModel(
           productId: 1,
           quantity: 2,
           title: "Mensq  ",
@@ -51,7 +52,7 @@ class CartTemplateShowCase extends StatelessWidget {
           image:
               "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
         ),
-                ProductCartModel(
+                ProductCartUIModel(
           productId: 1,
           quantity: 2,
           title: "Mensq  ",
@@ -59,7 +60,7 @@ class CartTemplateShowCase extends StatelessWidget {
           image:
               "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
         ),
-                ProductCartModel(
+                ProductCartUIModel(
           productId: 1,
           quantity: 2,
           title: "Mensq  ",

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/store_desing_system.dart';
-
+import 'package:flutter_models_commons/flutter_models_commons.dart' show CartUIModel, ProductCartUIModel;
+import 'package:store_design_system/store_design_system.dart';
 class CardCartOrganism extends StatelessWidget {
-  final ProductCartModel product;
+  final ProductCartUIModel product;
   final VoidCallback onIncrease;
   final VoidCallback onDecrease;
 

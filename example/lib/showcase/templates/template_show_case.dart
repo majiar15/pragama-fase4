@@ -13,8 +13,9 @@ import 'package:example/showcase/templates/forgot_password_template_showcase.dar
 import 'package:example/showcase/templates/home_template_show_case.dart';
 import 'package:example/showcase/templates/product_detail_template_show_case.dart';
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/store_desing_system.dart';
+import 'package:store_design_system/store_design_system.dart';
 import 'login_template_show_case.dart';
+import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
 
 class TemplateShowCase extends StatefulWidget {
   const TemplateShowCase({super.key});

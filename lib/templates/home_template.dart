@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/foundation/sizes_foundation.dart';
-import 'package:store_desing_system/models/product_model.dart';
-import 'package:store_desing_system/store_desing_system.dart';
+import 'package:store_design_system/foundation/sizes_foundation.dart';
+import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
 
+import 'package:store_design_system/store_design_system.dart';
 class HomeTemplate extends StatelessWidget {
   final String name;
   final List<String> categories;
@@ -88,8 +88,8 @@ class HomeTemplate extends StatelessWidget {
                   title: firstPartLst[i].title,
                   description: firstPartLst[i].description,
                   originalPrice: firstPartLst[i].price,
-                  rating: firstPartLst[i].rating.rate,
-                  reviews: firstPartLst[i].rating.count,
+                  rating: firstPartLst[i].rating?.rate ?? 0.0,
+                  reviews: firstPartLst[i].rating?.count ?? 0,
                   onTapCard: () => Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -158,8 +158,8 @@ class HomeTemplate extends StatelessWidget {
                   title: secondPartList[i].title,
                   description: secondPartList[i].description,
                   originalPrice: secondPartList[i].price,
-                  rating: secondPartList[i].rating.rate,
-                  reviews: secondPartList[i].rating.count,
+                  rating: secondPartList[i].rating?.rate ?? 0.0,
+                  reviews: secondPartList[i].rating?.count ?? 0,
                   onTapCard: () => Navigator.push(
                     context,
                     MaterialPageRoute(

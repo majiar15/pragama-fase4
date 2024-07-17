@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/store_desing_system.dart';
+import 'package:store_design_system/store_design_system.dart';
+import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
 
 
 class ProductDetailTemplateShowCase extends StatelessWidget {

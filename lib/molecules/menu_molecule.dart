@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/atoms/nav_item_atom.dart';
-import 'package:store_desing_system/foundation/colors_foundation.dart';
+import 'package:store_design_system/atoms/nav_item_atom.dart';
+import 'package:store_design_system/foundation/colors_foundation.dart';
 
 
 class BottomNavigationBarMolecule extends StatefulWidget {

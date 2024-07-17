@@ -1,7 +1,7 @@
-class CartModel {
+class CartUIModel {
     List<ProductCartModel> products;
 
-    CartModel({
+    CartUIModel({
         required this.products,
     });
 }

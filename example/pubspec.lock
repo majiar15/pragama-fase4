@@ -70,6 +70,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  flutter_models_commons:
+    dependency: transitive
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: e2821d8e79c6a725f3f8a1e57e9f4914021ebcdf
+      url: "https://github.com/majiar15/pragma-commons-models.git"
+    source: git
+    version: "0.0.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -144,7 +153,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
-  store_desing_system:
+  store_design_system:
     dependency: "direct main"
     description:
       path: ".."

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/foundation/colors_foundation.dart';
-import 'package:store_desing_system/foundation/spacing_foundation.dart';
-import 'package:store_desing_system/foundation/typography_foundation.dart';
+import 'package:store_design_system/foundation/colors_foundation.dart';
+import 'package:store_design_system/foundation/spacing_foundation.dart';
+import 'package:store_design_system/foundation/typography_foundation.dart';
 
 class ButtonAtom extends StatelessWidget {
   final String label;

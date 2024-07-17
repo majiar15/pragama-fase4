@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/molecules/filter_menu_molecule.dart';
-import 'package:store_desing_system/molecules/sort_menu_molecule.dart';
+import 'package:store_design_system/molecules/filter_menu_molecule.dart';
+import 'package:store_design_system/molecules/sort_menu_molecule.dart';
 
 class FilterSortOrganism extends StatelessWidget {
   final List<String> filterCategories;

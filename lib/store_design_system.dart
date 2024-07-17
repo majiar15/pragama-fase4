@@ -1,4 +1,4 @@
-library store_desing_system;
+library store_design_system;
 
 // foundations
 export 'foundation/colors_foundation.dart';
@@ -7,10 +7,7 @@ export 'foundation/spacing_foundation.dart';
 export 'foundation/theme_foundation.dart';
 export 'foundation/typography_foundation.dart';
 
-//model
-export 'models/product_model.dart';
-export 'models/cart_model.dart';
-export 'models/user_model.dart';
+
 
 // atoms
 export 'atoms/button_atom.dart';

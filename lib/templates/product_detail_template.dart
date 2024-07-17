@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/store_desing_system.dart';
+import 'package:store_design_system/store_design_system.dart';
+import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
 
 class ProductDetailTemplate extends StatelessWidget {
 
@@ -88,13 +89,13 @@ class ProductDetailTemplate extends StatelessWidget {
                         backgroundActiveColor: StoreColorsFoundation.goldColor,
                         backgroundDisableColor: StoreColorsFoundation.textHint,
                         items: 5,
-                        rating: product.rating.rate,
+                        rating: product.rating?.rate,
                         size: 25,
                       ),
                     ),
                     const SizedBox(width: 8.0),
                     Text(
-                      '${product.rating.count}',
+                      '${product.rating?.count}',
                       style: const TextStyle(
                         fontFamily: StoreTypographyFoundation.familyBody,
                         fontSize: StoreTypographyFoundation.fontSizeH5,
@@ -216,8 +217,8 @@ class ProductDetailTemplate extends StatelessWidget {
                       title: productSimilar[i].title,
                       description: productSimilar[i].description,
                       originalPrice: productSimilar[i].price,
-                      rating: productSimilar[i].rating.rate,
-                      reviews: productSimilar[i].rating.count,
+                      rating: productSimilar[i].rating?.rate,
+                      reviews: productSimilar[i].rating?.count,
                       onTapCard: () => Navigator.push(
                         context,
                         MaterialPageRoute(

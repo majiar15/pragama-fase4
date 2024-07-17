@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=/Users/admin/development/flutter
-FLUTTER_APPLICATION_PATH=/Users/admin/development/pragma/store_desing_system
+FLUTTER_APPLICATION_PATH=/Users/admin/development/pragma/store_design_system
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build

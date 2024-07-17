@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/foundation/colors_foundation.dart';
-import 'package:store_desing_system/foundation/sizes_foundation.dart';
-import 'package:store_desing_system/store_desing_system.dart';
-
+import 'package:store_design_system/foundation/colors_foundation.dart';
+import 'package:store_design_system/foundation/sizes_foundation.dart';
+import 'package:store_design_system/store_design_system.dart';
 class ListStarMolecule extends StatelessWidget {
   final Color backgroundActiveColor;
   final Color backgroundDisableColor;

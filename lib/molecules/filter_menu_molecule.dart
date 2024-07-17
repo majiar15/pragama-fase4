@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/atoms/filter_button_atom.dart';
+import 'package:store_design_system/atoms/filter_button_atom.dart';
 
 class FilterMenuMolecule extends StatelessWidget {
   final List<String> filterCategories;

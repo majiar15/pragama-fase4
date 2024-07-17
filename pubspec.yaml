@@ -1,4 +1,4 @@
-name: store_desing_system
+name: store_design_system
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
@@ -10,6 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_models_commons:
+    git:
+      url: https://github.com/majiar15/pragma-commons-models.git
+      branch: main
 
 dev_dependencies:
   flutter_test:

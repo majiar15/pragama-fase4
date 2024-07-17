@@ -6,7 +6,9 @@ import 'package:example/showcase/pages/forgot_password_page_showcase.dart';
 import 'package:example/showcase/pages/home_page_show_case.dart';
 import 'package:example/showcase/pages/product_detail_page_show_case.dart';
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/store_desing_system.dart';
+import 'package:store_design_system/store_design_system.dart';
+import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
+
 import 'login_page_show_case.dart';
 
 class PageShowcase extends StatefulWidget {

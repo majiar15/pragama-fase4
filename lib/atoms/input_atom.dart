@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/foundation/colors_foundation.dart';
-import 'package:store_desing_system/store_desing_system.dart';
-
+import 'package:store_design_system/foundation/colors_foundation.dart';
+import 'package:store_design_system/store_design_system.dart';
 class InputAtom extends StatefulWidget {
   final String label;
   final IconData? iconData;
@@ -26,16 +25,24 @@ class InputAtom extends StatefulWidget {
 }
 
 class _InputAtomState extends State<InputAtom> {
+  bool _obscureText = false;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _obscureText = widget.isPassword;
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    bool _obscureText = widget.isPassword;
+
     return Row(
       children: [
         Expanded(
           child: TextField(
             controller: widget.controller,
             keyboardType: widget.keyboardType,
-            obscureText: widget.isPassword,
+            obscureText: _obscureText,
             decoration: widget.decoration.copyWith(
               prefixIcon:
                   Icon(widget.iconData, color: StoreColorsFoundation.textColor),
@@ -55,6 +62,8 @@ class _InputAtomState extends State<InputAtom> {
                   ? GestureDetector(
                       onTap: () {
                         setState(() {
+                          print("tap tap $_obscureText");
+
                           _obscureText = !_obscureText;
                         });
                       },

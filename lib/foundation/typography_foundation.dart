@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_desing_system/tokens/typography_token.dart';
+import 'package:store_design_system/tokens/typography_token.dart';
 
 class StoreTypographyFoundation {
   StoreTypographyFoundation._();

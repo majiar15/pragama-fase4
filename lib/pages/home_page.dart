@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
   }
     return SafeArea(
       child: Scaffold(
-        appBar:  AppBarBarMolecule(
+        appBar:  AppBarMolecule(
           actions: [
             IconButton(
               onPressed: onTapCart,

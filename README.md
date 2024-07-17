@@ -25,7 +25,7 @@ Store Design System es una sistema de diseño para construir un ecomerce Flutter
      - [textArea](#text_area)
 
    - [Moléculas](#moléculas)
-     - [AppBarBarMolecule](#appbar)
+     - [AppBarMolecule](#appbar)
      - [BannerTrendingProductsMolecule](#banner_trending_products)
      - [FilterMenuMolecule](#filter_menu)
      - [list star](#list_start)
@@ -365,12 +365,12 @@ TextAreaAtom(
 
 #### AppBar
 
-El widget `AppBarBarMolecule` muestra una barra de aplicación personalizada con título y acciones.
+El widget `AppBarMolecule` muestra una barra de aplicación personalizada con título y acciones.
 
 1. Ejemplo
 
 ```dart
-AppBarBarMolecule(
+AppBarMolecule(
   title: const Text(
     "MY CLOTHING STORE",
     style: TextStyle(

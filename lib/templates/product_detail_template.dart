@@ -37,7 +37,7 @@ class ProductDetailTemplate extends StatelessWidget {
     final double buttonsWidths = screenSize.width * 0.4;
     return SafeArea(
       child: Scaffold(
-        appBar: const AppBarBarMolecule(
+        appBar: const AppBarMolecule(
           title: Text(
             'Detalle de producto',
             style: TextStyle(

@@ -158,7 +158,7 @@ class HomeTemplateState extends State<HomeTemplateShowCase> {
   }
     return SafeArea(
       child: Scaffold(
-        appBar:  AppBarBarMolecule(
+        appBar:  AppBarMolecule(
           actions: [
             IconButton(
               onPressed: onTapCart,

@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/store_design_system.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show CartUIModel;
+import 'package:flutter_models_commons/flutter_models_commons.dart'
+    show CartUIModel;
 
 class CartTemplate extends StatefulWidget {
   final CartUIModel cart;
   final VoidCallback onTapBuyNow;
-  const CartTemplate({
-    super.key,
-    required this.cart,
-    required this.onTapBuyNow
-  });
-
+  const CartTemplate(
+      {super.key, required this.cart, required this.onTapBuyNow});
 
   @override
   CartTemplateState createState() => CartTemplateState();
@@ -45,9 +42,11 @@ class CartTemplateState extends State<CartTemplate> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Carrito de Compras'),
-        ),
+        appBar: const AppBarMolecule(
+            title: Text("CARRITO",
+                style: TextStyle(
+                    color: StoreColorsFoundation.textColor,
+                    fontSize: StoreTypographyFoundation.fontSizeH3))),
         body: Column(
           children: [
             Expanded(
@@ -76,9 +75,7 @@ class CartTemplateState extends State<CartTemplate> {
                   ),
                   const SizedBox(height: StoreSpacingFoundation.s),
                   ButtonAtom(
-                    label: 'Realizar Compra',
-                    onPressed: widget.onTapBuyNow
-                  ),
+                      label: 'Realizar Compra', onPressed: widget.onTapBuyNow),
                 ],
               ),
             ),

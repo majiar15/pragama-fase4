@@ -16,7 +16,7 @@ class MoleculeShowCase extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildSectionTitle('AppBarBarMolecule Example'),
+            _buildSectionTitle('AppBarMolecule Example'),
             _buildAppBarBarMoleculeExample(),
 
 
@@ -88,7 +88,7 @@ class MoleculeShowCase extends StatelessWidget {
 
   Widget _buildAppBarBarMoleculeExample() {
     String codeSnippet = '''
-AppBarBarMolecule(
+AppBarMolecule(
   title: Text(
     'MY CLOTHING STORE',
     style: TextStyle(
@@ -103,7 +103,7 @@ AppBarBarMolecule(
       exampleWidget: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
-        AppBarBarMolecule(
+        AppBarMolecule(
           title: Text(
             'MY CLOTHING STORE',
             style: TextStyle(

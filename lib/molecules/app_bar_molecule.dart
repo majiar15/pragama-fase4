@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:store_design_system/foundation/colors_foundation.dart';
 import 'package:store_design_system/foundation/typography_foundation.dart';
 
-class AppBarBarMolecule extends StatelessWidget implements PreferredSizeWidget {
+class AppBarMolecule extends StatelessWidget implements PreferredSizeWidget {
   final Text title;
   final List<Widget>? actions;
   static const initTitle  = Text(
@@ -15,7 +15,7 @@ class AppBarBarMolecule extends StatelessWidget implements PreferredSizeWidget {
     )
   );
 
-  const AppBarBarMolecule({
+  const AppBarMolecule({
     Key? key,
     this.title = initTitle,
     this.actions,

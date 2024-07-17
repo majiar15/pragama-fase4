@@ -13,6 +13,7 @@ class HomeTemplate extends StatelessWidget {
   void Function() onTapLogin;
   void Function() onTapSignUp;
   void Function(String) onTapCategory;
+  void Function(ProductModel) onTapCard;
 
   HomeTemplate({
     super.key,
@@ -30,6 +31,7 @@ class HomeTemplate extends StatelessWidget {
     required this.onTapLogin,
     required this.onTapSignUp,
     required this.onTapCategory,
+    required this.onTapCard,
     this.onChangeUserText = _defaultOnChange,
     this.onChangePasswordText = _defaultOnChange,
   });
@@ -90,13 +92,7 @@ class HomeTemplate extends StatelessWidget {
                   originalPrice: firstPartLst[i].price,
                   rating: firstPartLst[i].rating?.rate ?? 0.0,
                   reviews: firstPartLst[i].rating?.count ?? 0,
-                  onTapCard: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ProductDetailPage(),
-                      settings: RouteSettings(arguments: firstPartLst[i]),
-                    ),
-                  ),
+                  onTapCard: () => onTapCard(firstPartLst[i]),
                 );
               },
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -134,13 +130,7 @@ class HomeTemplate extends StatelessWidget {
                     title: productList[i].title,
                     description: productList[i].description,
                     originalPrice: productList[i].price,
-                    onTapCard: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ProductDetailPage(),
-                        settings: RouteSettings(arguments: productList[i]),
-                      ),
-                    ),
+                    onTapCard: () => onTapCard(productList[i]),
                   );
                 },
               ),
@@ -160,13 +150,7 @@ class HomeTemplate extends StatelessWidget {
                   originalPrice: secondPartList[i].price,
                   rating: secondPartList[i].rating?.rate ?? 0.0,
                   reviews: secondPartList[i].rating?.count ?? 0,
-                  onTapCard: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ProductDetailPage(),
-                      settings: RouteSettings(arguments: secondPartList[i]),
-                    ),
-                  ),
+                  onTapCard: () => onTapCard(secondPartList[i]),
                 );
               },
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

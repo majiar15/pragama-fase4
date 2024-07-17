@@ -71,7 +71,7 @@ packages:
     source: hosted
     version: "2.0.3"
   flutter_models_commons:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "."
       ref: HEAD

@@ -30,7 +30,9 @@ class _InputAtomState extends State<InputAtom> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _obscureText = widget.isPassword;
+      setState(() {
+        _obscureText = widget.isPassword;
+      });
     });
   }
   @override
@@ -62,8 +64,6 @@ class _InputAtomState extends State<InputAtom> {
                   ? GestureDetector(
                       onTap: () {
                         setState(() {
-                          print("tap tap $_obscureText");
-
                           _obscureText = !_obscureText;
                         });
                       },

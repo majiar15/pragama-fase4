@@ -176,6 +176,7 @@ class _HomePageState extends State<HomePage> {
               onTapCategory: (String) {},
               onTapTrendingProducts: () {},
               productList: productList,
+              onTapCard: (ProductModel ) {  },
             ),
             CatalogTemplate(
               productList: productList, categories: const [],

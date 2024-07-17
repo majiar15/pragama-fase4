@@ -180,6 +180,8 @@ class _HomePageState extends State<HomePage> {
             ),
             CatalogTemplate(
               productList: productList, categories: const [],
+              onTapAddCart:(product) {},
+              onTapProductSimilar: (product) {},
             ),
             const SupportContactPage()
           ],

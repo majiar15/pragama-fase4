@@ -5,10 +5,15 @@ class CatalogTemplate extends StatefulWidget {
   final List<ProductModel> productList;
   final List<String> categories;
 
+  final void Function(ProductModel) onTapAddCart;
+  final void Function(ProductModel) onTapProductSimilar;
+
   const CatalogTemplate({
     super.key,
     required this.productList,
     required this.categories,
+    required this.onTapAddCart,
+    required this.onTapProductSimilar,
   });
 
   @override
@@ -136,13 +141,23 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
                     originalPrice: filteredList[i].price,
                     rating: filteredList[i].rating?.rate,
                     reviews: filteredList[i].rating?.count,
-                     onTapCard: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProductDetailPage(),
-                          settings: RouteSettings(arguments: filteredList[i]),
-                        ),
-                      ),
+                     onTapCard: () {
+                        final productSimilar = filteredList
+                          .where(
+                              (element) => element.category == filteredList[i].category)
+                          .toList();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetailTemplate(
+                              onTapAddCart: widget.onTapAddCart,
+                              onTapProductSimilar: widget.onTapProductSimilar,
+                              product: filteredList[i],
+                              productList: productSimilar,
+                            ),
+                          ),
+                        );
+                      },
                   );
                 },
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

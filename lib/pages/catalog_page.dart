@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/store_design_system.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
-
+import 'package:flutter_models_commons/flutter_models_commons.dart'
+    show ProductModel, Rating;
 
 class CatalogPage extends StatelessWidget {
   const CatalogPage({super.key});
@@ -138,6 +138,10 @@ class CatalogPage extends StatelessWidget {
     ];
 
     return CatalogTemplate(
-      categories: const [], productList: productList);
+      categories: const [],
+      productList: productList,
+      onTapAddCart: (ProductModel) {},
+      onTapProductSimilar: (ProductModel) {},
+    );
   }
 }

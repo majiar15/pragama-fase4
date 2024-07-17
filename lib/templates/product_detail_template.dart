@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/store_design_system.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
+import 'package:flutter_models_commons/flutter_models_commons.dart'
+    show ProductModel, Rating;
 
 class ProductDetailTemplate extends StatelessWidget {
-
   final ProductModel product;
   final List<ProductModel> productList;
   final void Function(ProductModel) onTapAddCard;
-  final void Function(ProductModel) onTapButNow;
   final void Function(ProductModel) onTapProductSimilar;
 
   final double originalPrice;
@@ -18,12 +17,9 @@ class ProductDetailTemplate extends StatelessWidget {
       required this.product,
       required this.productList,
       required this.onTapAddCard,
-      required this.onTapButNow,
       required this.onTapProductSimilar,
       this.originalPrice = 3000,
-      this.discountPercentage = 20
-      }
-  );
+      this.discountPercentage = 20});
 
   double get discountedPrice {
     if (discountPercentage != null &&
@@ -45,9 +41,8 @@ class ProductDetailTemplate extends StatelessWidget {
           title: Text(
             'Detalle de producto',
             style: TextStyle(
-              color: StoreColorsFoundation.textColor,
-              fontWeight: StoreTypographyFoundation.fontWeightBold
-            ),
+                color: StoreColorsFoundation.textColor,
+                fontWeight: StoreTypographyFoundation.fontWeightBold),
           ),
         ),
         body: SingleChildScrollView(
@@ -56,18 +51,18 @@ class ProductDetailTemplate extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Center(
-                   child: SizedBox(
+                Center(
+                  child: SizedBox(
                     height: 450,
-                     child: ClipRRect(
+                    child: ClipRRect(
                       borderRadius: const BorderRadius.all(
                           Radius.circular(StoreSizesFoundation.borderRadiusL)),
                       child: ImageAtom(
                         src: product.image,
                       ),
-                                   ),
-                   ),
-                 ),
+                    ),
+                  ),
+                ),
                 const SizedBox(
                   height: StoreSpacingFoundation.lg,
                 ),
@@ -82,8 +77,8 @@ class ProductDetailTemplate extends StatelessWidget {
                   height: StoreSpacingFoundation.md,
                 ),
                 Row(
-                  children:  [
-                     Flexible(
+                  children: [
+                    Flexible(
                       flex: 1,
                       child: ListStarMolecule(
                         backgroundActiveColor: StoreColorsFoundation.goldColor,
@@ -181,21 +176,18 @@ class ProductDetailTemplate extends StatelessWidget {
                   height: StoreSpacingFoundation.md,
                 ),
                 Row(
-                  
                   children: [
                     ButtonAtom(
                       label: 'añadir al carrito',
-                      onPressed: ()=>{ onTapAddCard(product) },
+                      onPressed: () => {onTapAddCard(product)},
                       backgroundColor: StoreColorsFoundation.primaryColor,
                       size: Size(buttonsWidths, 50),
                     ),
                   ],
                 ),
-
                 const SizedBox(
                   height: StoreSpacingFoundation.md,
                 ),
-
                 const Text(
                   "Productos Similares",
                   style: TextStyle(
@@ -203,11 +195,10 @@ class ProductDetailTemplate extends StatelessWidget {
                     fontWeight: StoreTypographyFoundation.fontWeightBold,
                   ),
                 ),
-
                 const SizedBox(
                   height: StoreSpacingFoundation.md,
                 ),
-                                GridView.builder(
+                GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: productSimilar.length,
@@ -219,13 +210,19 @@ class ProductDetailTemplate extends StatelessWidget {
                       originalPrice: productSimilar[i].price,
                       rating: productSimilar[i].rating?.rate,
                       reviews: productSimilar[i].rating?.count,
-                      onTapCard: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProductDetailPage(),
-                          settings: RouteSettings(arguments: productSimilar[i]),
-                        ),
-                      ),
+                      onTapCard: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetailTemplate(
+                              onTapAddCard: onTapAddCard,
+                              onTapProductSimilar: onTapProductSimilar,
+                              product: productSimilar[i],
+                              productList: productSimilar,
+                            ),
+                          ),
+                        )
+                      },
                     );
                   },
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

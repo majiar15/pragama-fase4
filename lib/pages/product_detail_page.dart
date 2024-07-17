@@ -142,7 +142,6 @@ class ProductDetailPage extends StatelessWidget {
     final productData = ModalRoute.of(context)?.settings.arguments as ProductModel;
     return ProductDetailTemplate(
       onTapAddCard: (product) {},
-      onTapButNow: (product) {},
       product: productData,
       onTapProductSimilar: (ProductModel) {}, productList: productList,
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/store_design_system.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
-
+import 'package:flutter_models_commons/flutter_models_commons.dart'
+    show ProductModel, Rating;
 
 class CatalogTemplateShowCase extends StatelessWidget {
   const CatalogTemplateShowCase({super.key});
@@ -140,7 +140,11 @@ class CatalogTemplateShowCase extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: CatalogTemplate(
-          categories: const [], productList: productList),
+          categories: const [],
+          productList: productList,
+          onTapAddCart: (ProductModel) {},
+          onTapProductSimilar: (ProductModel) {},
+        ),
       ),
     );
   }

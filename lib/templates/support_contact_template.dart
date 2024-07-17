@@ -52,7 +52,20 @@ class SupportContactTemplate extends StatelessWidget {
               Center(
                 child: ButtonAtom(
                   label: "Enviar",
-                  onPressed: () => print("Enviar"),
+                  onPressed: () => {
+                    DialogAtom(
+                      title: "Contacto",
+                      content: "se ha enviado un correo con su mensaje",
+                      rightButtonText: "Cerrar",
+                      onRightButtonPressed: (){
+                        nameController.text = "";
+                        emailController.text = "";
+                        subjectController.text = "";
+                        messageController.text = "";
+                        Navigator.pop(context);
+                      }
+                    ).show(context)
+                  },
                 ),
               ),
               const SizedBox(height: StoreSpacingFoundation.xl),
@@ -67,14 +80,14 @@ class SupportContactTemplate extends StatelessWidget {
               ),
               const SizedBox(height: StoreSpacingFoundation.md),
               const Text(
-                'Teléfono: +57 300 5525028',
+                'Teléfono: +57 300 5524028',
                 style: TextStyle(
                   fontSize: StoreTypographyFoundation.fontSizeH5,
                 ),
               ),
               const SizedBox(height: StoreSpacingFoundation.s),
               const Text(
-                'Correo Electrónico: majiar16@gmail.com',
+                'Correo Electrónico: majiar11@gmail.com',
                 style: TextStyle(
                   fontSize: StoreTypographyFoundation.fontSizeH5,
                 ),

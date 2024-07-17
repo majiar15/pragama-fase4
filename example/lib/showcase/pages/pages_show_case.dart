@@ -114,7 +114,7 @@ class _PageShowcaseState extends State<PageShowcase> {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const CartShowCase()
+                builder: (context) => const CartPageShowCase()
               ),
             ),
           ),

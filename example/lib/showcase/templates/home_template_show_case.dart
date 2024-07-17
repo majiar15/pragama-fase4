@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_design_system/pages/support_contact_page.dart';
 import 'package:store_design_system/store_design_system.dart';
 import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
 
@@ -180,7 +181,7 @@ class HomeTemplateState extends State<HomeTemplateShowCase> {
                },
             ),
             CatalogTemplate(
-              productList: productList, categories: const [],
+              productList: productList, categories: const [], onTapAddCart: (ProductModel ) {  }, onTapProductSimilar: (ProductModel ) {  },
             ),
             const SupportContactPage()
           ],

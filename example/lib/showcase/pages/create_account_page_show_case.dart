@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_design_system/store_design_system.dart';
+import 'package:store_design_system/pages/create_account_page.dart';
 
 
 class CreateAccountPageShowCase extends StatelessWidget {

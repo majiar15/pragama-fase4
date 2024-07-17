@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_design_system/store_design_system.dart';
+import 'package:store_design_system/pages/home_page.dart';
 
 
 class HomePageShowCase extends StatelessWidget {

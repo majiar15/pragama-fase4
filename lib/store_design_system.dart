@@ -45,14 +45,3 @@ export 'templates/product_detail_template.dart';
 export 'templates/catalog_template.dart';
 export 'templates/support_contact_template.dart';
 export 'templates/cart_template.dart';
-
-
-// pages
-export 'pages/login_page.dart';
-export 'pages/create_account_page.dart';
-export 'pages/forgot_password_page.dart';
-export 'pages/home_page.dart';
-export 'pages/product_detail_page.dart';
-export 'pages/catalog_page.dart';
-export 'pages/support_contact_page.dart';
-export 'pages/cart_page.dart';

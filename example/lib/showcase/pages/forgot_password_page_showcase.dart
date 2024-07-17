@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_design_system/store_design_system.dart';
+import 'package:store_design_system/pages/forgot_password_page.dart';
 
 
 class ForgotPasswordPageShowCase extends StatelessWidget {

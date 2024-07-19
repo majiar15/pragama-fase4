@@ -139,6 +139,7 @@ class OfferTemplateShowCase extends StatelessWidget {
 
     return OfferTemplate(
           productList: productList,
+          productsSimilar: productList,
           onTapAddCart: (ProductModel) {},
           onTapProductSimilar: (ProductModel) {},
         );

@@ -139,6 +139,7 @@ class OfferPage extends StatelessWidget {
 
     return OfferTemplate(
       productList: productList,
+      productsSimilar: productList,
       onTapAddCart: (DiscountedProduct) {},
       onTapProductSimilar: (DiscountedProduct) {},
     );

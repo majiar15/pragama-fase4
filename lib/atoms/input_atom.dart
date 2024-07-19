@@ -6,6 +6,7 @@ class InputAtom extends StatefulWidget {
   final IconData? iconData;
   final TextEditingController controller;
   final TextInputType keyboardType;
+  final String? Function(String?)? validator;
   final bool isPassword;
   final InputDecoration decoration;
   final ValueChanged<String> onChanged;
@@ -15,6 +16,7 @@ class InputAtom extends StatefulWidget {
     this.iconData,
     required this.controller,
     this.keyboardType = TextInputType.text,
+    this.validator,
     this.isPassword = false,
     this.decoration = const InputDecoration(),
     required this.onChanged,
@@ -41,10 +43,11 @@ class _InputAtomState extends State<InputAtom> {
     return Row(
       children: [
         Expanded(
-          child: TextField(
+          child: TextFormField(
             controller: widget.controller,
             keyboardType: widget.keyboardType,
             obscureText: _obscureText,
+            validator: widget.validator ,
             decoration: widget.decoration.copyWith(
               prefixIcon:
                   Icon(widget.iconData, color: StoreColorsFoundation.textColor),

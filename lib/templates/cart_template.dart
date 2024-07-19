@@ -45,42 +45,55 @@ class CartTemplateState extends State<CartTemplate> {
         appBar: const AppBarMolecule(
             title: Text("CARRITO",
                 style: TextStyle(
+                  color: StoreColorsFoundation.textColor,
+                  fontSize: StoreTypographyFoundation.fontSizeH3,
+                ))),
+        body: widget.cart.products.isEmpty
+            ? const Center(
+                child: Text(
+                  '¡Agrega Productos al carrito!',
+                  style: TextStyle(
                     color: StoreColorsFoundation.textColor,
-                    fontSize: StoreTypographyFoundation.fontSizeH3))),
-        body: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: widget.cart.products.length,
-                itemBuilder: (context, index) {
-                  final product = widget.cart.products[index];
-                  return CardCartOrganism(
-                    product: product,
-                    onIncrease: () => _increaseQuantity(index),
-                    onDecrease: () => _decreaseQuantity(index),
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(StoreSizesFoundation.paddingS),
-              child: Column(
+                    fontSize: StoreTypographyFoundation.fontSizeH3,
+                  ),
+                ),
+              )
+            : Column(
                 children: [
-                  Text(
-                    'Total de la Compra: \$${_calculateTotal().toStringAsFixed(2)}',
-                    style: const TextStyle(
-                      fontSize: StoreTypographyFoundation.fontSizeH4,
-                      fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: widget.cart.products.length,
+                      itemBuilder: (context, index) {
+                        final product = widget.cart.products[index];
+                        return CardCartOrganism(
+                          product: product,
+                          onIncrease: () => _increaseQuantity(index),
+                          onDecrease: () => _decreaseQuantity(index),
+                        );
+                      },
                     ),
                   ),
-                  const SizedBox(height: StoreSpacingFoundation.s),
-                  ButtonAtom(
-                      label: 'Realizar Compra', onPressed: widget.onTapBuyNow),
+                  Padding(
+                    padding:
+                        const EdgeInsets.all(StoreSizesFoundation.paddingS),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Total de la Compra: \$${_calculateTotal().toStringAsFixed(2)}',
+                          style: const TextStyle(
+                            fontSize: StoreTypographyFoundation.fontSizeH4,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: StoreSpacingFoundation.s),
+                        ButtonAtom(
+                            label: 'Realizar Compra',
+                            onPressed: widget.onTapBuyNow),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }

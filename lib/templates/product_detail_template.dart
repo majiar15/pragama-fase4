@@ -6,8 +6,8 @@ import 'package:flutter_models_commons/flutter_models_commons.dart'
 class ProductDetailTemplate extends StatelessWidget {
   final DiscountedProduct product;
   final List<DiscountedProduct> productList;
-  final void Function(ProductModel) onTapAddCart;
-  final void Function(ProductModel) onTapProductSimilar;
+  final void Function(DiscountedProduct) onTapAddCart;
+  final void Function(DiscountedProduct) onTapProductSimilar;
 
   final double originalPrice;
   final int? discountPercentage;
@@ -179,7 +179,9 @@ class ProductDetailTemplate extends StatelessWidget {
                   children: [
                     ButtonAtom(
                       label: 'añadir al carrito',
-                      onPressed: () => {onTapAddCart(product)},
+                      onPressed: () => {onTapAddCart(
+                        product.copyWith(price: discountedPrice)
+                      )},
                       backgroundColor: StoreColorsFoundation.primaryColor,
                       size: Size(buttonsWidths, 50),
                     ),

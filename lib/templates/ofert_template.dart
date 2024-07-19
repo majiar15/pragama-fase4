@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_models_commons/flutter_models_commons.dart'
-    show ProductModel, DiscountedProduct;
+    show DiscountedProduct;
 import 'package:store_design_system/store_design_system.dart';
 
 class OfferTemplate extends StatefulWidget {
   final List<DiscountedProduct> productList;
 
-  final void Function(ProductModel) onTapAddCart;
-  final void Function(ProductModel) onTapProductSimilar;
+  final void Function(DiscountedProduct) onTapAddCart;
+  final void Function(DiscountedProduct) onTapProductSimilar;
 
   const OfferTemplate({
     super.key,

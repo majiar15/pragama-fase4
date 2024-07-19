@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/foundation/sizes_foundation.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, DiscountedProduct, Rating;
+import 'package:flutter_models_commons/flutter_models_commons.dart' show DiscountedProduct, Rating;
 
 import 'package:store_design_system/store_design_system.dart';
 class HomeTemplate extends StatelessWidget {
@@ -8,7 +8,7 @@ class HomeTemplate extends StatelessWidget {
   final List<String> categories;
   final List<DiscountedProduct> productList;
   void Function() onTapTrendingProducts;
-  void Function(ProductModel) onTapCard;
+  void Function(DiscountedProduct) onTapCard;
 
   HomeTemplate({
     super.key,

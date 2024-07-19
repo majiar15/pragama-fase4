@@ -7,12 +7,7 @@ class HomeTemplate extends StatelessWidget {
   final String name;
   final List<String> categories;
   final List<ProductModel> productList;
-  void Function(String) onChangeUserText;
-  void Function(String) onChangePasswordText;
   void Function() onTapTrendingProducts;
-  void Function() onTapLogin;
-  void Function() onTapSignUp;
-  void Function(String) onTapCategory;
   void Function(ProductModel) onTapCard;
 
   HomeTemplate({
@@ -28,15 +23,8 @@ class HomeTemplate extends StatelessWidget {
     ],
     required this.productList,
     required this.onTapTrendingProducts,
-    required this.onTapLogin,
-    required this.onTapSignUp,
-    required this.onTapCategory,
-    required this.onTapCard,
-    this.onChangeUserText = _defaultOnChange,
-    this.onChangePasswordText = _defaultOnChange,
+    required this.onTapCard
   });
-
-  static void _defaultOnChange(String text) {}
 
   get getGreeting {
     final hour = DateTime.now().hour;

@@ -45,3 +45,4 @@ export 'templates/product_detail_template.dart';
 export 'templates/catalog_template.dart';
 export 'templates/support_contact_template.dart';
 export 'templates/cart_template.dart';
+export 'templates/ofert_template.dart';

@@ -11,6 +11,7 @@ import 'package:example/showcase/templates/contact_support_template_show_case.da
 import 'package:example/showcase/templates/create_account_template_show_case.dart';
 import 'package:example/showcase/templates/forgot_password_template_showcase.dart';
 import 'package:example/showcase/templates/home_template_show_case.dart';
+import 'package:example/showcase/templates/offert_template_show_case.dart';
 import 'package:example/showcase/templates/product_detail_template_show_case.dart';
 import 'package:flutter/material.dart';
 import 'package:store_design_system/store_design_system.dart';
@@ -99,6 +100,15 @@ class TemplateShowCaseState extends State<TemplateShowCase> {
               context,
               MaterialPageRoute(
                 builder: (context) => const CatalogTemplateShowCase(),
+              ),
+            ),
+          ),
+          ListTile(
+            title: const Text('Ofert Template'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const OfferTemplateShowCase(),
               ),
             ),
           ),

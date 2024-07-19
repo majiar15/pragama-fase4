@@ -19,7 +19,7 @@ class ProductDetailTemplate extends StatelessWidget {
       required this.onTapAddCart,
       required this.onTapProductSimilar,
       this.originalPrice = 3000,
-      this.discountPercentage = 20});
+      this.discountPercentage = 0});
 
   double get discountedPrice {
     if (discountPercentage != null &&

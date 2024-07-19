@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/foundation/sizes_foundation.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
+import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, DiscountedProduct, Rating;
 
 import 'package:store_design_system/store_design_system.dart';
 class HomeTemplate extends StatelessWidget {
   final String name;
   final List<String> categories;
-  final List<ProductModel> productList;
+  final List<DiscountedProduct> productList;
   void Function() onTapTrendingProducts;
   void Function(ProductModel) onTapCard;
 
@@ -40,8 +40,8 @@ class HomeTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    List<ProductModel> firstPartLst = productList.length >= 4 ? productList.sublist(0, 4) : [];
-    List<ProductModel> secondPartList = productList.length >= 4 ? productList.sublist(4) : [];
+    List<DiscountedProduct> firstPartLst = productList.length >= 4 ? productList.sublist(0, 4) : [];
+    List<DiscountedProduct> secondPartList = productList.length >= 4 ? productList.sublist(4) : [];
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(StoreSizesFoundation.paddingM),
@@ -80,6 +80,7 @@ class HomeTemplate extends StatelessWidget {
                   originalPrice: firstPartLst[i].price,
                   rating: firstPartLst[i].rating?.rate ?? 0.0,
                   reviews: firstPartLst[i].rating?.count ?? 0,
+                  discountPercentage: firstPartLst[i]?.discountPercentage ?? 0,
                   onTapCard: () => onTapCard(firstPartLst[i]),
                 );
               },
@@ -118,6 +119,7 @@ class HomeTemplate extends StatelessWidget {
                     title: productList[i].title,
                     description: productList[i].description,
                     originalPrice: productList[i].price,
+                    discountPercentage: productList[i]?.discountPercentage ?? 0,
                     onTapCard: () => onTapCard(productList[i]),
                   );
                 },
@@ -138,6 +140,7 @@ class HomeTemplate extends StatelessWidget {
                   originalPrice: secondPartList[i].price,
                   rating: secondPartList[i].rating?.rate ?? 0.0,
                   reviews: secondPartList[i].rating?.count ?? 0,
+                  discountPercentage: secondPartList[i]?.discountPercentage ?? 0,
                   onTapCard: () => onTapCard(secondPartList[i]),
                 );
               },

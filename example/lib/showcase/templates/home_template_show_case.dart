@@ -170,11 +170,6 @@ class HomeTemplateState extends State<HomeTemplateShowCase> {
           index: _selectedIndex,
           children: [
             HomeTemplate(
-              onTapLogin: () => {print("login")},
-              onTapSignUp: () => {print("sigup")},
-              onChangePasswordText: (text) => {print("change passs")},
-              onChangeUserText: (text) => {print("change user")},
-              onTapCategory: (String) {},
               onTapTrendingProducts: () {},
               productList: productList,
               onTapCard: (ProductModel ) {

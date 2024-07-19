@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_models_commons/flutter_models_commons.dart'
-    show ProductModel;
+    show ProductModel, DiscountedProduct;
 import 'package:store_design_system/store_design_system.dart';
 
 class OfferTemplate extends StatefulWidget {
-  final List<ProductModel> productList;
+  final List<DiscountedProduct> productList;
 
   final void Function(ProductModel) onTapAddCart;
   final void Function(ProductModel) onTapProductSimilar;
@@ -50,6 +50,7 @@ class OfferTemplateState extends State<OfferTemplate> {
                   originalPrice: widget.productList[i].price,
                   rating: widget.productList[i].rating?.rate,
                   reviews: widget.productList[i].rating?.count,
+                  discountPercentage: widget.productList[i]?.discountPercentage ?? 0,
                   onTapCard: () {
                     final productSimilar = widget.productList
                         .where((element) =>

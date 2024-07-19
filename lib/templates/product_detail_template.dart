@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/store_design_system.dart';
 import 'package:flutter_models_commons/flutter_models_commons.dart'
-    show ProductModel, Rating;
+    show ProductModel, Rating, DiscountedProduct;
 
 class ProductDetailTemplate extends StatelessWidget {
-  final ProductModel product;
-  final List<ProductModel> productList;
+  final DiscountedProduct product;
+  final List<DiscountedProduct> productList;
   final void Function(ProductModel) onTapAddCart;
   final void Function(ProductModel) onTapProductSimilar;
 
@@ -33,7 +33,7 @@ class ProductDetailTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    List<ProductModel> productSimilar = productList.sublist(0, 4);
+    List<DiscountedProduct> productSimilar = productList.sublist(0, 4);
     final double buttonsWidths = screenSize.width * 0.4;
     return SafeArea(
       child: Scaffold(

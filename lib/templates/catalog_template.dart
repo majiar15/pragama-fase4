@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel;
+import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, DiscountedProduct;
 import 'package:store_design_system/store_design_system.dart';
 class CatalogTemplate extends StatefulWidget {
-  final List<ProductModel> productList;
+  final List<DiscountedProduct> productList;
   final List<String> categories;
 
   final void Function(ProductModel) onTapAddCart;
@@ -21,7 +21,7 @@ class CatalogTemplate extends StatefulWidget {
 }
 
 class _CatalogTemplateState extends State<CatalogTemplate> {
-  late List<ProductModel> filteredList;
+  late List<DiscountedProduct> filteredList;
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
 

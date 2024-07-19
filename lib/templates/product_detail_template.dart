@@ -33,7 +33,7 @@ class ProductDetailTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    List<DiscountedProduct> productSimilar = productList.sublist(0, 4);
+    List<DiscountedProduct> productSimilar = productList.length >= 4 ? productList.sublist(0, 4) : [];
     final double buttonsWidths = screenSize.width * 0.4;
     return SafeArea(
       child: Scaffold(

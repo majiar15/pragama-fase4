@@ -89,7 +89,7 @@ class HomeTemplate extends StatelessWidget {
                 childAspectRatio: 1.0,
                 crossAxisSpacing: 0.0,
                 mainAxisSpacing: 5,
-                mainAxisExtent: 370,
+                mainAxisExtent: 440,
               ),
             ),
             const SizedBox(
@@ -104,7 +104,7 @@ class HomeTemplate extends StatelessWidget {
             ),
             SizedBox(
               width: screenSize.width,
-              height: 240,
+              height: 280,
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 1,

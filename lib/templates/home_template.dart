@@ -149,7 +149,7 @@ class HomeTemplate extends StatelessWidget {
                 childAspectRatio: 1.0,
                 crossAxisSpacing: 0.0,
                 mainAxisSpacing: 5,
-                mainAxisExtent: 370,
+                mainAxisExtent: 440,
               ),
             ),
           ],

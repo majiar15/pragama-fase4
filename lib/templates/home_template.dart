@@ -3,7 +3,7 @@ import 'package:store_design_system/foundation/sizes_foundation.dart';
 import 'package:flutter_models_commons/flutter_models_commons.dart' show DiscountedProduct, Rating;
 
 import 'package:store_design_system/store_design_system.dart';
-class HomeTemplate extends StatelessWidget {
+class HomeTemplate extends StatefulWidget {
   final String name;
   final List<String> categories;
   final List<DiscountedProduct> productList;
@@ -26,6 +26,21 @@ class HomeTemplate extends StatelessWidget {
     required this.onTapCard
   });
 
+
+  @override
+  State<HomeTemplate> createState() => _HomeTemplateState();
+  
+}
+
+class _HomeTemplateState extends State<HomeTemplate> {
+  late List<DiscountedProduct> firstPartLst;
+  late List<DiscountedProduct> secondPartList;
+  @override
+  void initState() {
+    super.initState();
+    firstPartLst = widget.productList.length >= 4 ? widget.productList.sublist(0, 4) : [];
+    secondPartList = widget.productList.length >= 4 ? widget.productList.sublist(4) : [];
+  }
   get getGreeting {
     final hour = DateTime.now().hour;
     if (hour < 12) {
@@ -40,8 +55,7 @@ class HomeTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    List<DiscountedProduct> firstPartLst = productList.length >= 4 ? productList.sublist(0, 4) : [];
-    List<DiscountedProduct> secondPartList = productList.length >= 4 ? productList.sublist(4) : [];
+    
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(StoreSizesFoundation.paddingM),
@@ -49,7 +63,7 @@ class HomeTemplate extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "$getGreeting, $name",
+              "$getGreeting, ${widget.name}",
               style: const TextStyle(
                 fontSize: StoreTypographyFoundation.fontSizeH4,
                 fontWeight: StoreTypographyFoundation.fontWeightBold,
@@ -81,7 +95,7 @@ class HomeTemplate extends StatelessWidget {
                   rating: firstPartLst[i].rating?.rate ?? 0.0,
                   reviews: firstPartLst[i].rating?.count ?? 0,
                   discountPercentage: firstPartLst[i]?.discountPercentage ?? 0,
-                  onTapCard: () => onTapCard(firstPartLst[i]),
+                  onTapCard: () => widget.onTapCard(firstPartLst[i]),
                 );
               },
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -97,7 +111,7 @@ class HomeTemplate extends StatelessWidget {
             ),
             BannerTrendingProductsMolecule(
               date: "15/05/2024",
-              onTapButon: onTapTrendingProducts,
+              onTapButton: widget.onTapTrendingProducts,
             ),
             const SizedBox(
               height: StoreSpacingFoundation.lg,
@@ -110,17 +124,17 @@ class HomeTemplate extends StatelessWidget {
                   crossAxisCount: 1,
                   childAspectRatio: 1.1,
                 ),
-                itemCount: productList.length,
+                itemCount: widget.productList.length,
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int i) {
                   return CardSmallOrganism(
-                    imageUrl: productList[i].image,
-                    title: productList[i].title,
-                    description: productList[i].description,
-                    originalPrice: productList[i].price,
-                    discountPercentage: productList[i]?.discountPercentage ?? 0,
-                    onTapCard: () => onTapCard(productList[i]),
+                    imageUrl: widget.productList[i].image,
+                    title: widget.productList[i].title,
+                    description: widget.productList[i].description,
+                    originalPrice: widget.productList[i].price,
+                    discountPercentage: widget.productList[i]?.discountPercentage ?? 0,
+                    onTapCard: () => widget.onTapCard(widget.productList[i]),
                   );
                 },
               ),
@@ -141,7 +155,7 @@ class HomeTemplate extends StatelessWidget {
                   rating: secondPartList[i].rating?.rate ?? 0.0,
                   reviews: secondPartList[i].rating?.count ?? 0,
                   discountPercentage: secondPartList[i]?.discountPercentage ?? 0,
-                  onTapCard: () => onTapCard(secondPartList[i]),
+                  onTapCard: () => widget.onTapCard(secondPartList[i]),
                 );
               },
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

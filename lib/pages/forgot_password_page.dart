@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_design_system/store_design_system.dart';
+import 'package:store_design_system/templates/forgot_password_template.dart';
+
 
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});

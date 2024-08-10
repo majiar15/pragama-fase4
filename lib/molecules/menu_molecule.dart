@@ -16,10 +16,10 @@ class BottomNavigationBarMolecule extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _BottomNavigationBarMoleculeState createState() => _BottomNavigationBarMoleculeState();
+  BottomNavigationBarMoleculeState createState() => BottomNavigationBarMoleculeState();
 }
 
-class _BottomNavigationBarMoleculeState extends State<BottomNavigationBarMolecule> {
+class BottomNavigationBarMoleculeState extends State<BottomNavigationBarMolecule> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(

@@ -13,8 +13,12 @@ class HomeTemplateShowCase extends StatefulWidget {
 
 class HomeTemplateState extends State<HomeTemplateShowCase> {
   int _selectedIndex = 0;
-  @override
-  Widget build(BuildContext context) {
+    List<String> _categories = ["men's clothing", "jewelery", "electronics"];
+
+
+
+
+
     final productList = [
       DiscountedProduct(
           id: 1,
@@ -145,19 +149,80 @@ class HomeTemplateState extends State<HomeTemplateShowCase> {
           image: "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
           rating: Rating(rate: 2.9, count: 250)),
     ];
-        const List<Widget> _widgetOptions = <Widget>[
-      Text('Home Page',
+    late List<DiscountedProduct> _filteredList;
+    final List<Widget> _widgetOptions =  <Widget>[
+      const Text('Home Page',
           style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-      Text('Search Page',
+      const Text('Search Page',
           style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-      Text('Contact Page',
+      const Text('Contact Page',
           style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     ];
+
+  @override
+  void initState() {
+    _filteredList = List.from(productList);
+    super.initState();
+  }
+  void _sortProducts(String sortOption) {
+    setState(() {
+      switch (sortOption) {
+        case "title_asc":
+          _filteredList.sort((a, b) => a.title.compareTo(b.title));
+          break;
+        case "title_desc":
+          _filteredList.sort((a, b) => b.title.compareTo(a.title));
+          break;
+        case "price_asc":
+          _filteredList.sort((a, b) => a.price.compareTo(b.price));
+          break;
+        case "price_desc":
+          _filteredList.sort((a, b) => b.price.compareTo(a.price));
+          break;
+        case "reviews_asc":
+          _filteredList.sort(
+              (a, b) => a.rating?.rate?.compareTo(b.rating?.rate ?? 0) ?? 0);
+          break;
+        case "reviews_desc":
+          _filteredList.sort(
+              (a, b) => b.rating?.rate?.compareTo(a.rating?.rate ?? 0) ?? 0);
+          break;
+      }
+    });
+  }
+
+  void _performSearch(String query) {
+    setState(() {
+      _filteredList = productList
+          .where((product) =>
+              product.title.toLowerCase().contains(query.toLowerCase()) ||
+              product.description
+                  .toLowerCase()
+                  .contains(query.toLowerCase()))
+          .toList();
+    });
+  }
+
+  void _filterProducts(String filterOption) {
+    setState(() {
+      if (_categories.contains(filterOption)) {
+        _filteredList = productList
+            .where((product) => product.category == filterOption)
+            .toList();
+      } else {
+        _filteredList = List.from(productList); // Mostrar todos los productos
+      }
+    });
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
+
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar:  AppBarMolecule(
@@ -178,7 +243,13 @@ class HomeTemplateState extends State<HomeTemplateShowCase> {
                },
             ),
             CatalogTemplate(
-              productList: productList, categories: const [], onTapAddCart: (DiscountedProduct ) {  }, onTapProductSimilar: (DiscountedProduct ) {  },
+              productList: productList,
+              categories: _categories,
+              onTapAddCart: (product) {},
+              onTapProductSimilar: (product) {},
+              onSearch: _performSearch,
+              onFilterProducts: _filterProducts,
+              onSortSelected: _sortProducts,
             ),
             const SupportContactPage()
           ],

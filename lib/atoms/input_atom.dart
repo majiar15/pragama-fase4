@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_design_system/foundation/colors_foundation.dart';
-import 'package:store_design_system/store_design_system.dart';
+import 'package:store_design_system/foundations.dart';
 class InputAtom extends StatefulWidget {
   final String label;
   final IconData? iconData;
@@ -10,6 +9,7 @@ class InputAtom extends StatefulWidget {
   final bool isPassword;
   final InputDecoration decoration;
   final ValueChanged<String> onChanged;
+
   const InputAtom({
     super.key,
     required this.label,
@@ -59,6 +59,12 @@ class _InputAtomState extends State<InputAtom> {
                 borderRadius: BorderRadius.circular(StoreSizesFoundation.borderRadiusM),
               ),
               focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(StoreSizesFoundation.borderRadiusM),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(StoreSizesFoundation.borderRadiusM),
+              ),
+              errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(StoreSizesFoundation.borderRadiusM),
               ),
               contentPadding:

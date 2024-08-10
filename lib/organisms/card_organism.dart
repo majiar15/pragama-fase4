@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:store_design_system/atoms/image_atom.dart';
 import 'package:store_design_system/foundation/colors_foundation.dart';
 import 'package:store_design_system/foundation/sizes_foundation.dart';
 import 'package:store_design_system/foundation/typography_foundation.dart';
-import 'package:store_design_system/store_design_system.dart';
+import 'package:store_design_system/molecules/list_star_molecule.dart';
 class CardOrganism extends StatelessWidget {
   final String imageUrl;
   final String title;
@@ -11,9 +12,9 @@ class CardOrganism extends StatelessWidget {
   final int? discountPercentage;
   final double? rating;
   final int? reviews;
-  void Function() onTapCard;
+  final void Function() onTapCard;
 
-  CardOrganism({
+  const CardOrganism({
     super.key,
     required this.imageUrl,
     required this.title,

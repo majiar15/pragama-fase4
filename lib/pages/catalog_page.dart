@@ -3,12 +3,17 @@ import 'package:store_design_system/store_design_system.dart';
 import 'package:flutter_models_commons/flutter_models_commons.dart'
     show DiscountedProduct, Rating;
 
-class CatalogPage extends StatelessWidget {
+class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final productList = [
+  State<CatalogPage> createState() => _CatalogPageState();
+}
+
+class _CatalogPageState extends State<CatalogPage> {
+  final List<String> _categories = ["men's clothing", "jewelery", "electronics"];
+
+  final productList = [
       DiscountedProduct(
           id: 1,
           title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -136,12 +141,77 @@ class CatalogPage extends StatelessWidget {
           image: "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
           rating: Rating(rate: 2.9, count: 250)),
     ];
+  late List<DiscountedProduct> _filteredList;
+
+
+
+  @override
+  void initState() {
+    _filteredList = List.from(productList);
+    super.initState();
+  }
+  void _sortProducts(String sortOption) {
+    setState(() {
+      switch (sortOption) {
+        case "title_asc":
+          _filteredList.sort((a, b) => a.title.compareTo(b.title));
+          break;
+        case "title_desc":
+          _filteredList.sort((a, b) => b.title.compareTo(a.title));
+          break;
+        case "price_asc":
+          _filteredList.sort((a, b) => a.price.compareTo(b.price));
+          break;
+        case "price_desc":
+          _filteredList.sort((a, b) => b.price.compareTo(a.price));
+          break;
+        case "reviews_asc":
+          _filteredList.sort(
+              (a, b) => a.rating.rate.compareTo(b.rating.rate));
+          break;
+        case "reviews_desc":
+          _filteredList.sort(
+              (a, b) => b.rating.rate.compareTo(a.rating.rate));
+          break;
+      }
+    });
+  }
+
+  void _performSearch(String query) {
+    setState(() {
+      _filteredList = productList
+          .where((product) =>
+              product.title.toLowerCase().contains(query.toLowerCase()) ||
+              product.description
+                  .toLowerCase()
+                  .contains(query.toLowerCase()))
+          .toList();
+    });
+  }
+
+  void _filterProducts(String filterOption) {
+    setState(() {
+      if (_categories.contains(filterOption)) {
+        _filteredList = productList
+            .where((product) => product.category == filterOption)
+            .toList();
+      } else {
+        _filteredList = List.from(productList);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
 
     return CatalogTemplate(
-      categories: const [],
-      productList: productList,
-      onTapAddCart: (DiscountedProduct) {},
-      onTapProductSimilar: (DiscountedProduct) {},
-    );
+          productList: productList,
+          categories: _categories,
+          onTapAddCart: (product) {},
+          onTapProductSimilar: (product) {},
+          onSearch: _performSearch,
+          onFilterProducts: _filterProducts,
+          onSortSelected: _sortProducts,
+        );
   }
 }

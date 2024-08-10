@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:store_design_system/foundation/typography_foundation.dart';
-import 'package:store_design_system/store_design_system.dart';
+import 'package:store_design_system/atoms/image_atom.dart';
+import 'package:store_design_system/foundations.dart';
 class CardSmallOrganism extends StatelessWidget {
   final String imageUrl;
   final String title;
   final String description;
   final double originalPrice;
   final int? discountPercentage;
-  void Function() onTapCard;
+  final void Function() onTapCard;
 
-  CardSmallOrganism({
+  const CardSmallOrganism({
     super.key,
     required this.imageUrl,
     required this.title,

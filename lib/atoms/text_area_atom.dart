@@ -5,6 +5,8 @@ class TextAreaAtom extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final int maxLines;
+  final String? Function(String?)? validator;
+
 
   const TextAreaAtom({
     super.key,
@@ -12,6 +14,8 @@ class TextAreaAtom extends StatelessWidget {
     required this.label,
     required this.controller,
     this.maxLines = 5,
+    this.validator,
+
   });
 
   @override
@@ -33,9 +37,10 @@ class TextAreaAtom extends StatelessWidget {
           ],
         ),
         const SizedBox(height: StoreSpacingFoundation.xs),
-        TextField(
+        TextFormField(
           controller: controller,
           maxLines: maxLines,
+          validator:validator,
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(StoreSizesFoundation.borderRadiusM),
@@ -44,6 +49,10 @@ class TextAreaAtom extends StatelessWidget {
               borderRadius: BorderRadius.circular(StoreSizesFoundation.borderRadiusM),
               borderSide: const BorderSide(color: StoreColorsFoundation.primaryColor),
             ),
+            errorBorder:  OutlineInputBorder(
+              borderRadius: BorderRadius.circular(StoreSizesFoundation.borderRadiusM),
+              borderSide: const BorderSide(color: StoreColorsFoundation.primaryColor),
+            )
           ),
         ),
       ],

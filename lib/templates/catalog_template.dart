@@ -7,6 +7,9 @@ class CatalogTemplate extends StatefulWidget {
 
   final void Function(ProductModel) onTapAddCart;
   final void Function(ProductModel) onTapProductSimilar;
+  final void Function(String query) onSearch;
+  final void Function(String sortOption) onSortSelected;
+  final void Function(String filterOption) onFilterProducts;
 
   const CatalogTemplate({
     super.key,
@@ -14,6 +17,10 @@ class CatalogTemplate extends StatefulWidget {
     required this.categories,
     required this.onTapAddCart,
     required this.onTapProductSimilar,
+    required this.onSearch,
+    required this.onSortSelected,
+    required this.onFilterProducts,
+
   });
 
   @override
@@ -21,64 +28,61 @@ class CatalogTemplate extends StatefulWidget {
 }
 
 class _CatalogTemplateState extends State<CatalogTemplate> {
-  late List<DiscountedProduct> filteredList;
+
   final TextEditingController _searchController = TextEditingController();
-  String _searchQuery = '';
 
   @override
   void initState() {
     super.initState();
-    filteredList = widget.productList;
   }
 
-  void _sortProducts(String sortOption) {
-    setState(() {
-      switch (sortOption) {
-        case "title_asc":
-          filteredList.sort((a, b) => a.title.compareTo(b.title));
-          break;
-        case "title_desc":
-          filteredList.sort((a, b) => b.title.compareTo(a.title));
-          break;
-        case "price_asc":
-          filteredList.sort((a, b) => a.price.compareTo(b.price));
-          break;
-        case "price_desc":
-          filteredList.sort((a, b) => b.price.compareTo(a.price));
-          break;
-        case "reviews_asc":
-          filteredList.sort((a, b) => a.rating?.rate?.compareTo(b.rating?.rate ?? 0) ?? 0);
-          break;
-        case "reviews_desc":
-          filteredList.sort((a, b) => b.rating?.rate?.compareTo(a.rating?.rate ?? 0) ?? 0 );
-          break;
-      }
-    });
-  }
+  // void _sortProducts(String sortOption) {
+  //   setState(() {
+  //     switch (sortOption) {
+  //       case "title_asc":
+  //         filteredList.sort((a, b) => a.title.compareTo(b.title));
+  //         break;
+  //       case "title_desc":
+  //         filteredList.sort((a, b) => b.title.compareTo(a.title));
+  //         break;
+  //       case "price_asc":
+  //         filteredList.sort((a, b) => a.price.compareTo(b.price));
+  //         break;
+  //       case "price_desc":
+  //         filteredList.sort((a, b) => b.price.compareTo(a.price));
+  //         break;
+  //       case "reviews_asc":
+  //         filteredList.sort((a, b) => a.rating?.rate?.compareTo(b.rating?.rate ?? 0) ?? 0);
+  //         break;
+  //       case "reviews_desc":
+  //         filteredList.sort((a, b) => b.rating?.rate?.compareTo(a.rating?.rate ?? 0) ?? 0 );
+  //         break;
+  //     }
+  //   });
+  // }
 
-  void _performSearch(String query) {
-    setState(() {
-      _searchQuery = query;
-      filteredList = widget.productList
-          .where((product) =>
-              product.title.toLowerCase().contains(query.toLowerCase()) ||
-              product.description.toLowerCase().contains(query.toLowerCase()))
-          .toList();
-    });
-  }
+  // void _performSearch(String query) {
+  //   setState(() {
+  //     filteredList = widget.productList
+  //         .where((product) =>
+  //             product.title.toLowerCase().contains(query.toLowerCase()) ||
+  //             product.description.toLowerCase().contains(query.toLowerCase()))
+  //         .toList();
+  //   });
+  // }
 
-  void _filterProducts(String filterOption) {
-    final bool isCategoryInclude = widget.categories.contains(filterOption);
-    setState(() {
-      if (isCategoryInclude) {
-        filteredList = widget.productList
-            .where((product) => product.category == filterOption)
-            .toList();
-      } else {
-        filteredList = widget.productList;
-      }
-    });
-  }
+  // void _filterProducts(String filterOption) {
+  //   final bool isCategoryInclude = widget.categories.contains(filterOption);
+  //   setState(() {
+  //     if (isCategoryInclude) {
+  //       filteredList = widget.productList
+  //           .where((product) => product.category == filterOption)
+  //           .toList();
+  //     } else {
+  //       filteredList = widget.productList;
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +96,7 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
             InputAtom(
               label: 'Search',
               controller: _searchController,
-              onChanged: _performSearch,
+              onChanged: widget.onSearch,
               iconData: Icons.search,
               isPassword: false,
             ),
@@ -104,7 +108,7 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
               children: [
                 RichText(
                   text: TextSpan(
-                      text: "${filteredList.length} ",
+                      text: "${widget.productList.length} ",
                       style: const TextStyle(
                         fontSize: StoreTypographyFoundation.fontSizeUpSmall,
                         fontWeight: StoreTypographyFoundation.fontWeightBold,
@@ -122,8 +126,8 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
                 ),
                 FilterSortOrganism(
                   filterCategories: [...widget.categories, "All"],
-                  onSortSelected: _sortProducts,
-                  onFilterSelected: _filterProducts,
+                  onSortSelected: widget.onSortSelected,
+                  onFilterSelected: widget.onFilterProducts,
                 )
               ],
             ),
@@ -132,19 +136,19 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
             ),
             Expanded(
               child: GridView.builder(
-                itemCount: filteredList.length,
+                itemCount: widget.productList.length,
                 itemBuilder: (ctx, i) {
                   return CardOrganism(
-                    imageUrl: filteredList[i].image,
-                    title: filteredList[i].title,
-                    description: filteredList[i].description,
-                    originalPrice: filteredList[i].price,
-                    rating: filteredList[i].rating?.rate,
-                    reviews: filteredList[i].rating?.count,
+                    imageUrl: widget.productList[i].image,
+                    title: widget.productList[i].title,
+                    description: widget.productList[i].description,
+                    originalPrice: widget.productList[i].price,
+                    rating: widget.productList[i].rating?.rate,
+                    reviews: widget.productList[i].rating?.count,
                      onTapCard: () {
-                        final productSimilar = filteredList
+                        final productSimilar = widget.productList
                           .where(
-                              (element) => element.category == filteredList[i].category)
+                              (element) => element.category == widget.productList[i].category)
                           .toList();
                         Navigator.push(
                           context,
@@ -152,7 +156,7 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
                             builder: (context) => ProductDetailTemplate(
                               onTapAddCart: widget.onTapAddCart,
                               onTapProductSimilar: widget.onTapProductSimilar,
-                              product: filteredList[i],
+                              product: widget.productList[i],
                               productList: productSimilar,
                             ),
                           ),

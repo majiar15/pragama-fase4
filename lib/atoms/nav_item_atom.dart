@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:store_design_system/foundation/colors_foundation.dart';
 
 class NavigationItemAtom {
   final IconData icon;

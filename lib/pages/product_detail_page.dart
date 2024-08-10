@@ -1,16 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:store_design_system/store_design_system.dart';
 import 'package:flutter_models_commons/flutter_models_commons.dart' show DiscountedProduct, Rating;
-
-import '../templates/login_template.dart';
 
 class ProductDetailPage extends StatelessWidget {
   const ProductDetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController userController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
   final productList = [
       DiscountedProduct(
           id: 1,
@@ -143,7 +141,7 @@ class ProductDetailPage extends StatelessWidget {
     return ProductDetailTemplate(
       onTapAddCart: (product) {},
       product: productData,
-      onTapProductSimilar: (DiscountedProduct) {}, productList: productList,
+      onTapProductSimilar: (DiscountedProduct discountedProduct) {log(discountedProduct.title);}, productList: productList,
     );
   }
 }

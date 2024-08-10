@@ -11,8 +11,8 @@ class SortButtonAtom extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Row(
-        children: const [
+      child: const Row(
+        children: [
           Text(
             "Sort",
             style: TextStyle(

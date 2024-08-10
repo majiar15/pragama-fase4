@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/foundation/sizes_foundation.dart';
 import 'package:store_design_system/store_design_system.dart';
+
 class ForgotPasswordTemplate extends StatelessWidget {
   final TextEditingController emailController;
-  void Function(String) onChangeEmailText;
-  void Function() onSubmit;
+  final void Function(String) onChangeEmailText;
+  final void Function() onSubmit;
+
   ForgotPasswordTemplate({
     super.key,
     required this.emailController,
@@ -14,79 +16,100 @@ class ForgotPasswordTemplate extends StatelessWidget {
 
   static void _defaultOnChange(String text) {}
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-  print(size.width - (StoreSizesFoundation.paddingM * 2));
+    print(size.width - (StoreSizesFoundation.paddingM * 2));
+
     return SafeArea(
       child: Scaffold(
-          body: Padding(
-        padding: const EdgeInsets.all(StoreSizesFoundation.paddingM),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "¿Olvidó su",
-                style: TextStyle(
-                    fontSize: StoreTypographyFoundation.fontSizeH1,
-                    fontWeight: StoreTypographyFoundation.fontWeightBold),
-              ),
-              const Text(
-                "contraseña?",
-                style: TextStyle(
-                    fontSize: StoreTypographyFoundation.fontSizeH1,
-                    fontWeight: StoreTypographyFoundation.fontWeightBold),
-              ),
-              const SizedBox(
-                height: StoreSpacingFoundation.lg,
-              ),
-              InputAtom(
-                  iconData: Icons.email,
-                  label: "ingrese su Email",
-                  controller: emailController,
-                  onChanged: onChangeEmailText),
-              const SizedBox(
-                height: StoreSpacingFoundation.md,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+        body: Padding(
+          padding: const EdgeInsets.all(StoreSizesFoundation.paddingM),
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: RichText(
-                      text: const TextSpan(
-                        text: '*',
-                        style: TextStyle(
-                          color: StoreColorsFoundation.primaryColor,
-                          fontSize: StoreTypographyFoundation.fontSizeH5,
-                        ),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text:
-                                ' Le enviaremos un mensaje para configurar o restablecer su nueva contraseña',
+                  const Text(
+                    "¿Olvidó su",
+                    style: TextStyle(
+                        fontSize: StoreTypographyFoundation.fontSizeH1,
+                        fontWeight: StoreTypographyFoundation.fontWeightBold),
+                  ),
+                  const Text(
+                    "contraseña?",
+                    style: TextStyle(
+                        fontSize: StoreTypographyFoundation.fontSizeH1,
+                        fontWeight: StoreTypographyFoundation.fontWeightBold),
+                  ),
+                  const SizedBox(
+                    height: StoreSpacingFoundation.lg,
+                  ),
+                  InputAtom(
+                    iconData: Icons.email,
+                    label: "Ingrese su Email",
+                    controller: emailController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor ingrese su correo electrónico';
+                      }
+                      if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                        return 'Por favor ingrese un correo electrónico válido';
+                      }
+                      return null;
+                    },
+                    onChanged: onChangeEmailText,
+                  ),
+                  const SizedBox(
+                    height: StoreSpacingFoundation.md,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: RichText(
+                          text: const TextSpan(
+                            text: '*',
                             style: TextStyle(
-                              color: StoreColorsFoundation.textColor,
+                              color: StoreColorsFoundation.primaryColor,
+                              fontSize: StoreTypographyFoundation.fontSizeH5,
                             ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                text:
+                                    ' Le enviaremos un mensaje para configurar o restablecer su nueva contraseña',
+                                style: TextStyle(
+                                  color: StoreColorsFoundation.textColor,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: StoreSpacingFoundation.xl,
+                  ),
+                  Center(
+                    child: ButtonAtom(
+                      label: "Enviar",
+                      onPressed: () {
+                        if (_formKey.currentState?.validate() ?? false) {
+                          onSubmit();
+                        }
+                      },
                     ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: StoreSpacingFoundation.xl,
-              ),
-              Center(
-                child: ButtonAtom(
-                  label: "Enviar",
-                  onPressed: onSubmit,
-                ),
-              ),
-            ],
+            ),
           ),
         ),
-      )),
+      ),
     );
   }
 }

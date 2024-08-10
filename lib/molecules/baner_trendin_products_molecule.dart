@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:store_design_system/foundation/colors_foundation.dart';
-import 'package:store_design_system/foundation/sizes_foundation.dart';
-import 'package:store_design_system/store_design_system.dart';
+import 'package:store_design_system/foundations.dart';
 class BannerTrendingProductsMolecule extends StatelessWidget {
   final String date;
-  final void Function() onTapButon;
+  final void Function() onTapButton;
+
   const BannerTrendingProductsMolecule({
     super.key,
     required this.date,
-    required this.onTapButon
+    required this.onTapButton
   });
 
   @override
@@ -50,13 +49,13 @@ class BannerTrendingProductsMolecule extends StatelessWidget {
             ],
           ),
           OutlinedButton(
-            onPressed: onTapButon,
+            onPressed: onTapButton,
             style: OutlinedButton.styleFrom(
               side: const BorderSide(color: StoreColorsFoundation.onPrimaryColor),
               foregroundColor: Colors.white,
             ),
-            child: Row(
-              children: const [
+            child: const Row(
+              children: [
                 Text('View all'),
                 Icon(Icons.arrow_forward, color: StoreColorsFoundation.onPrimaryColor),
               ],

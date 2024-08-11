@@ -5,8 +5,7 @@ class CatalogTemplate extends StatefulWidget {
   final List<DiscountedProduct> productList;
   final List<String> categories;
 
-  final void Function(ProductModel) onTapAddCart;
-  final void Function(ProductModel) onTapProductSimilar;
+  final void Function(ProductModel) onTapCard;
   final void Function(String query) onSearch;
   final void Function(String sortOption) onSortSelected;
   final void Function(String filterOption) onFilterProducts;
@@ -15,8 +14,7 @@ class CatalogTemplate extends StatefulWidget {
     super.key,
     required this.productList,
     required this.categories,
-    required this.onTapAddCart,
-    required this.onTapProductSimilar,
+    required this.onTapCard,
     required this.onSearch,
     required this.onSortSelected,
     required this.onFilterProducts,
@@ -36,57 +34,10 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
     super.initState();
   }
 
-  // void _sortProducts(String sortOption) {
-  //   setState(() {
-  //     switch (sortOption) {
-  //       case "title_asc":
-  //         filteredList.sort((a, b) => a.title.compareTo(b.title));
-  //         break;
-  //       case "title_desc":
-  //         filteredList.sort((a, b) => b.title.compareTo(a.title));
-  //         break;
-  //       case "price_asc":
-  //         filteredList.sort((a, b) => a.price.compareTo(b.price));
-  //         break;
-  //       case "price_desc":
-  //         filteredList.sort((a, b) => b.price.compareTo(a.price));
-  //         break;
-  //       case "reviews_asc":
-  //         filteredList.sort((a, b) => a.rating?.rate?.compareTo(b.rating?.rate ?? 0) ?? 0);
-  //         break;
-  //       case "reviews_desc":
-  //         filteredList.sort((a, b) => b.rating?.rate?.compareTo(a.rating?.rate ?? 0) ?? 0 );
-  //         break;
-  //     }
-  //   });
-  // }
 
-  // void _performSearch(String query) {
-  //   setState(() {
-  //     filteredList = widget.productList
-  //         .where((product) =>
-  //             product.title.toLowerCase().contains(query.toLowerCase()) ||
-  //             product.description.toLowerCase().contains(query.toLowerCase()))
-  //         .toList();
-  //   });
-  // }
-
-  // void _filterProducts(String filterOption) {
-  //   final bool isCategoryInclude = widget.categories.contains(filterOption);
-  //   setState(() {
-  //     if (isCategoryInclude) {
-  //       filteredList = widget.productList
-  //           .where((product) => product.category == filterOption)
-  //           .toList();
-  //     } else {
-  //       filteredList = widget.productList;
-  //     }
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
 
     return  Padding(
         padding: const EdgeInsets.all(StoreSizesFoundation.paddingM),
@@ -126,8 +77,12 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
                 ),
                 FilterSortOrganism(
                   filterCategories: [...widget.categories, "All"],
-                  onSortSelected: widget.onSortSelected,
-                  onFilterSelected: widget.onFilterProducts,
+                  onSortSelected: (sort){
+                    widget.onSortSelected(sort);
+                  },
+                  onFilterSelected: (filter){
+                    widget.onFilterProducts(filter);
+                  },
                 )
               ],
             ),
@@ -142,26 +97,12 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
                     imageUrl: widget.productList[i].image,
                     title: widget.productList[i].title,
                     description: widget.productList[i].description,
+                    discountPercentage: widget.productList[i].discountPercentage,
                     originalPrice: widget.productList[i].price,
-                    rating: widget.productList[i].rating?.rate,
-                    reviews: widget.productList[i].rating?.count,
-                     onTapCard: () {
-                        final productSimilar = widget.productList
-                          .where(
-                              (element) => element.category == widget.productList[i].category)
-                          .toList();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProductDetailTemplate(
-                              onTapAddCart: widget.onTapAddCart,
-                              onTapProductSimilar: widget.onTapProductSimilar,
-                              product: widget.productList[i],
-                              productList: productSimilar,
-                            ),
-                          ),
-                        );
-                      },
+                    rating: widget.productList[i].rating.rate,
+                    reviews: widget.productList[i].rating.count,
+                    onTapCard: () => widget.onTapCard(widget.productList[i]),
+
                   );
                 },
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -169,7 +110,7 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
                   childAspectRatio: 1.0,
                   crossAxisSpacing: 0.0,
                   mainAxisSpacing: 5,
-                  mainAxisExtent: 370,
+                  mainAxisExtent: 440,
                 ),
               ),
             ),

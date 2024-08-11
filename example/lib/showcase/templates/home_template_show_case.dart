@@ -13,7 +13,7 @@ class HomeTemplateShowCase extends StatefulWidget {
 
 class HomeTemplateState extends State<HomeTemplateShowCase> {
   int _selectedIndex = 0;
-    List<String> _categories = ["men's clothing", "jewelery", "electronics"];
+    final List<String> _categories = ["men's clothing", "jewelery", "electronics"];
 
 
 
@@ -150,14 +150,6 @@ class HomeTemplateState extends State<HomeTemplateShowCase> {
           rating: Rating(rate: 2.9, count: 250)),
     ];
     late List<DiscountedProduct> _filteredList;
-    final List<Widget> _widgetOptions =  <Widget>[
-      const Text('Home Page',
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-      const Text('Search Page',
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-      const Text('Contact Page',
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    ];
 
   @override
   void initState() {
@@ -181,11 +173,11 @@ class HomeTemplateState extends State<HomeTemplateShowCase> {
           break;
         case "reviews_asc":
           _filteredList.sort(
-              (a, b) => a.rating?.rate?.compareTo(b.rating?.rate ?? 0) ?? 0);
+              (a, b) => a.rating.rate.compareTo(b.rating.rate));
           break;
         case "reviews_desc":
           _filteredList.sort(
-              (a, b) => b.rating?.rate?.compareTo(a.rating?.rate ?? 0) ?? 0);
+              (a, b) => b.rating.rate.compareTo(a.rating.rate));
           break;
       }
     });
@@ -245,8 +237,7 @@ class HomeTemplateState extends State<HomeTemplateShowCase> {
             CatalogTemplate(
               productList: productList,
               categories: _categories,
-              onTapAddCart: (product) {},
-              onTapProductSimilar: (product) {},
+              onTapCard: (product) {},
               onSearch: _performSearch,
               onFilterProducts: _filterProducts,
               onSortSelected: _sortProducts,
@@ -254,24 +245,50 @@ class HomeTemplateState extends State<HomeTemplateShowCase> {
             const SupportContactPage()
           ],
         ),
-       bottomNavigationBar: BottomNavigationBarMolecule(
-        items: const [
-          NavigationItemAtom(
-            icon: Icons.home,
-            label: 'Inicio',
-          ),
-          NavigationItemAtom(
-            icon: Icons.search,
-            label: 'Catalogo',
-          ),
-          NavigationItemAtom(
-            icon: Icons.contact_mail,
-            label: 'Contacto',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-      ),
+        drawer: DrawerOrganism(
+          name: "Martin Jimenez",
+          onTapLogout: (){
+            
+          },
+          items: [
+            DrawerItemMolecule(
+              icon: Icons.home,
+              label: 'Inicio',
+              onTap: () {},
+            ),
+            DrawerItemMolecule(
+              icon: Icons.search,
+              label: 'Catalogo',
+              onTap: () {},
+            ),
+            DrawerItemMolecule(
+              icon: Icons.contact_mail,
+              label: 'Contacto',
+              onTap: () {},
+            ),
+          ],
+          onClose: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      //  bottomNavigationBar: BottomNavigationBarMolecule(
+      //   items: const [
+      //     NavigationItemAtom(
+      //       icon: Icons.home,
+      //       label: 'Inicio',
+      //     ),
+      //     NavigationItemAtom(
+      //       icon: Icons.search,
+      //       label: 'Catalogo',
+      //     ),
+      //     NavigationItemAtom(
+      //       icon: Icons.contact_mail,
+      //       label: 'Contacto',
+      //     ),
+      //   ],
+      //   currentIndex: _selectedIndex,
+      //   onTap: _onItemTapped,
+      // ),
       ),
     );
   }

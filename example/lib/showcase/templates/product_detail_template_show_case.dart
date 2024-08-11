@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/store_design_system.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show DiscountedProduct, Rating;
-
+import 'package:flutter_models_commons/flutter_models_commons.dart'
+    show DiscountedProduct, Rating;
 
 class ProductDetailTemplateShowCase extends StatelessWidget {
   const ProductDetailTemplateShowCase({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController userController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
-  final productList = [
+    final productList = [
       DiscountedProduct(
           id: 1,
           title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -138,11 +136,13 @@ class ProductDetailTemplateShowCase extends StatelessWidget {
           image: "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
           rating: Rating(rate: 2.9, count: 250)),
     ];
-    final productData = ModalRoute.of(context)?.settings.arguments as DiscountedProduct;
+    final productData =
+        ModalRoute.of(context)?.settings.arguments as DiscountedProduct;
     return ProductDetailTemplate(
       onTapAddCart: (product) {},
       product: productData,
-      onTapProductSimilar: (DiscountedProduct) {}, productList: productList,
+      productList: productList,
+      onTapSimilarProduct: (DiscountedProduct product) {},
     );
   }
 }

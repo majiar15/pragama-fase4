@@ -140,8 +140,7 @@ class OfferTemplateShowCase extends StatelessWidget {
     return OfferTemplate(
           productList: productList,
           productsSimilar: productList,
-          onTapAddCart: (DiscountedProduct) {},
-          onTapProductSimilar: (DiscountedProduct) {},
+          onTapAddCart: (DiscountedProduct) {}, onTapCard: (DiscountedProduct ) {  },
         );
   }
 }

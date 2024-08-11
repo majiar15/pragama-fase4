@@ -15,18 +15,21 @@ class FilterMenuMolecule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<PopupMenuButtonState<String>> _key = GlobalKey();
+    final GlobalKey<PopupMenuButtonState<String>> key = GlobalKey();
 
     return PopupMenuButton<String>(
-      key: _key,
-      onSelected: onFilterSelected,
+      key: key, 
+      onSelected: (select){
+      onFilterSelected(select);
+
+      },
       itemBuilder: (context) => filterCategories.map((category) => PopupMenuItem(
         value: category,
         child: Text(category),
       )).toList(),
 
       child: FilterButtonAtom(
-            onTap:  () => _key.currentState?.showButtonMenu(),
+            onTap:  () => key.currentState?.showButtonMenu(),
 
       ),
     );

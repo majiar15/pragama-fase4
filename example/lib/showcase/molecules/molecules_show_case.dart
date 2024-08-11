@@ -52,16 +52,6 @@ class MoleculeShowCase extends StatelessWidget {
             const Divider(thickness: 2, color: Colors.black,),
             const SizedBox(height: StoreSpacingFoundation.md),
             
-
-            _buildSectionTitle('BottomNavigationBarMolecule Example'),
-            _buildBottomNavigationBarMoleculeExample(),
-            
-
-            const SizedBox(height: StoreSpacingFoundation.md),
-            const Divider(thickness: 2, color: Colors.black,),
-            const SizedBox(height: StoreSpacingFoundation.md),
-            
-
             _buildSectionTitle('SortMenuMolecule Example'),
             _buildSortMenuMoleculeExample(),
             
@@ -174,32 +164,6 @@ const ListStarMolecule(
         backgroundDisableColor: Colors.grey,
         items: 5,
         rating: 3.5,
-      ),
-      codeSnippet: codeSnippet,
-    );
-  }
-
-  Widget _buildBottomNavigationBarMoleculeExample() {
-    List<NavigationItemAtom> items = [
-      const NavigationItemAtom(icon: Icons.home, label: 'Home'),
-      const NavigationItemAtom(icon: Icons.person, label: 'Profile'),
-    ];
-    String codeSnippet = '''
-BottomNavigationBarMolecule(
-  items: [
-      const NavigationItemAtom(icon: Icons.home, label: 'Home'),
-      const NavigationItemAtom(icon: Icons.person, label: 'Profile'),
-    ],
-  currentIndex: 0,
-  onTap: (index) { },
-),
-''';
- return ShowCodeExample(
-      title: "",
-      exampleWidget:BottomNavigationBarMolecule(
-        items: items,
-        currentIndex: 0,
-        onTap: (index) { },
       ),
       codeSnippet: codeSnippet,
     );

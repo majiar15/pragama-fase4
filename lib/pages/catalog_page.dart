@@ -207,8 +207,7 @@ class _CatalogPageState extends State<CatalogPage> {
     return CatalogTemplate(
           productList: productList,
           categories: _categories,
-          onTapAddCart: (product) {},
-          onTapProductSimilar: (product) {},
+          onTapCard: (product) {},
           onSearch: _performSearch,
           onFilterProducts: _filterProducts,
           onSortSelected: _sortProducts,

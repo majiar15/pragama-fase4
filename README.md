@@ -590,7 +590,7 @@ FilterSortOrganism(
 
 ## Templates
 
-![Templates](/assets/videoTemplate.gif)
+![Templates](/docs/videoTemplate.gif)
 ## Paginas
 Las paginas son instancias de las templates, es decir que las paginas serán creadas por el usuario final
 

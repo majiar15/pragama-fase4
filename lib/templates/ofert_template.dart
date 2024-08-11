@@ -8,14 +8,14 @@ class OfferTemplate extends StatefulWidget {
   final List<DiscountedProduct> productsSimilar;
 
   final void Function(DiscountedProduct) onTapAddCart;
-  final void Function(DiscountedProduct) onTapProductSimilar;
+  final void Function(DiscountedProduct) onTapCard;
 
   const OfferTemplate({
     super.key,
     required this.productList,
     required this.productsSimilar,
     required this.onTapAddCart,
-    required this.onTapProductSimilar,
+    required this.onTapCard,
   });
 
   @override
@@ -50,26 +50,12 @@ class OfferTemplateState extends State<OfferTemplate> {
                   title: widget.productList[i].title,
                   description: widget.productList[i].description,
                   originalPrice: widget.productList[i].price,
-                  rating: widget.productList[i].rating?.rate,
-                  reviews: widget.productList[i].rating?.count,
-                  discountPercentage: widget.productList[i]?.discountPercentage ?? 0,
+                  rating: widget.productList[i].rating.rate,
+                  reviews: widget.productList[i].rating.count,
+                  discountPercentage: widget.productList[i].discountPercentage,
                   onTapCard: () {
-                    final productSimilarCategory = widget.productsSimilar
-                        .where((element) =>
-                            element.category == widget.productsSimilar[i].category)
-                        .toList();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProductDetailTemplate(
-                          onTapAddCart: widget.onTapAddCart,
-                          onTapProductSimilar: widget.onTapProductSimilar,
-                          discountPercentage: widget.productList[i]?.discountPercentage ?? 0,
-                          product: widget.productList[i],
-                          productList: productSimilarCategory,
-                        ),
-                      ),
-                    );
+
+                        widget.onTapCard(widget.productList[i]);
                   },
                 );
               },
@@ -78,7 +64,7 @@ class OfferTemplateState extends State<OfferTemplate> {
                 childAspectRatio: 1.0,
                 crossAxisSpacing: 0.0,
                 mainAxisSpacing: 5,
-                mainAxisExtent: 370,
+                mainAxisExtent: 440,
               ),
             ),
       ),

@@ -226,8 +226,7 @@ class _HomePageState extends State<HomePage> {
             CatalogTemplate(
               productList: _filteredList,
               categories: _categories,
-              onTapAddCart: (product) {},
-              onTapProductSimilar: (product) {},
+              onTapCard: (product) {},
               onSearch: _performSearch,
               onFilterProducts: _filterProducts,
               onSortSelected: _sortProducts,
@@ -235,23 +234,31 @@ class _HomePageState extends State<HomePage> {
             const SupportContactPage(),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBarMolecule(
-          items: const [
-            NavigationItemAtom(
+                drawer: DrawerOrganism(
+          name: "Martin Jimenez",
+          onTapLogout: (){
+            
+          },
+          items: [
+            DrawerItemMolecule(
               icon: Icons.home,
               label: 'Inicio',
+              onTap: () {},
             ),
-            NavigationItemAtom(
+            DrawerItemMolecule(
               icon: Icons.search,
-              label: 'Catálogo',
+              label: 'Catalogo',
+              onTap: () {},
             ),
-            NavigationItemAtom(
+            DrawerItemMolecule(
               icon: Icons.contact_mail,
               label: 'Contacto',
+              onTap: () {},
             ),
           ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
+          onClose: () {
+            Navigator.of(context).pop();
+          },
         ),
       ),
     );

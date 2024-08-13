@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:store_design_system/foundation/sizes_foundation.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show DiscountedProduct, Rating;
+import 'package:flutter_models_commons/flutter_models_commons.dart' show DiscountedProduct;
 
 import 'package:store_design_system/store_design_system.dart';
 class HomeTemplate extends StatefulWidget {
   final String name;
   final List<String> categories;
   final List<DiscountedProduct> productList;
-  void Function() onTapTrendingProducts;
-  void Function(DiscountedProduct) onTapCard;
+  final void Function() onTapTrendingProducts;
+  final void Function(DiscountedProduct) onTapCard;
 
-  HomeTemplate({
+  const HomeTemplate({
     super.key,
     this.name = "Martin",
     this.categories = const [

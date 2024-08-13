@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show CartUIModel, ProductCartUIModel;
+import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductCartUIModel;
 import 'package:store_design_system/foundations.dart';
 class CardCartOrganism extends StatelessWidget {
   final ProductCartUIModel product;

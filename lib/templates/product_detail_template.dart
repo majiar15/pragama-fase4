@@ -202,6 +202,7 @@ class ProductDetailTemplate extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: productSimilar.length,
                 itemBuilder: (ctx, i) {
+                  print("ejecutando");
                   return CardOrganism(
                     imageUrl: productSimilar[i].image,
                     title: productSimilar[i].title,

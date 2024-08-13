@@ -60,6 +60,7 @@ class LoginTemplate extends StatelessWidget {
                     height: StoreSpacingFoundation.lg,
                   ),
                   InputAtom(
+                    key: const Key('loginUsernameField'),
                     iconData: Icons.person,
                     label: "Usuario",
                     controller: userController,
@@ -75,6 +76,7 @@ class LoginTemplate extends StatelessWidget {
                     height: StoreSpacingFoundation.md,
                   ),
                   InputAtom(
+                    key: const Key('loginPasswordField'),
                     iconData: Icons.lock,
                     label: "Contraseña",
                     controller: passwordController,
@@ -99,6 +101,7 @@ class LoginTemplate extends StatelessWidget {
                       GestureDetector(
                         onTap: onTapForgotPassword,
                         child: const Text(
+                          key: Key('loginTextForgotPassword'),
                           "¿Has olvidado tu contraseña?",
                           style: TextStyle(
                               fontSize: StoreTypographyFoundation.fontSizeH5,
@@ -112,6 +115,7 @@ class LoginTemplate extends StatelessWidget {
                   ),
                   Center(
                     child: ButtonAtom(
+                      key: const Key('loginOnTapLogin'),
                       label: "Ingresar",
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {
@@ -136,6 +140,7 @@ class LoginTemplate extends StatelessWidget {
                       GestureDetector(
                         onTap: onTapSignUp,
                         child: const Text(
+                          key: Key('loginTextRegister'),
                           "Registrarse",
                           style: TextStyle(
                               color: StoreColorsFoundation.primaryColor,

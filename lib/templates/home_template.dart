@@ -87,6 +87,7 @@ class _HomeTemplateState extends State<HomeTemplate> {
               itemCount: firstPartLst.length,
               itemBuilder: (ctx, i) {
                 return CardOrganism(
+                  key: Key('cardHomeFist $i'),
                   imageUrl: firstPartLst[i].image,
                   title: firstPartLst[i].title,
                   description: firstPartLst[i].description,
@@ -109,6 +110,7 @@ class _HomeTemplateState extends State<HomeTemplate> {
               height: StoreSpacingFoundation.lg,
             ),
             BannerTrendingProductsMolecule(
+              
               date: "15/05/2024",
               onTapButton: widget.onTapTrendingProducts,
             ),
@@ -128,6 +130,8 @@ class _HomeTemplateState extends State<HomeTemplate> {
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int i) {
                   return CardSmallOrganism(
+                    key: Key('homeSmallCard $i'),
+
                     imageUrl: widget.productList[i].image,
                     title: widget.productList[i].title,
                     description: widget.productList[i].description,
@@ -147,6 +151,8 @@ class _HomeTemplateState extends State<HomeTemplate> {
               itemCount: 4,
               itemBuilder: (ctx, i) {
                 return CardOrganism(
+                  key: Key('cardHomeSecond $i'),
+
                   imageUrl: secondPartList[i].image,
                   title: secondPartList[i].title,
                   description: secondPartList[i].description,

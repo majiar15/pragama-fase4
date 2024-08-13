@@ -87,6 +87,7 @@ class CartTemplateState extends State<CartTemplate> {
                         ),
                         const SizedBox(height: StoreSpacingFoundation.s),
                         ButtonAtom(
+                          key: const Key("cartButtonBuy"),
                             label: 'Realizar Compra',
                             onPressed: widget.onTapBuyNow),
                       ],

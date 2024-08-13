@@ -32,6 +32,7 @@ class DrawerOrganism extends StatelessWidget {
             ),
           ),
           DrawerItemMolecule(
+            key: const Key("drawerLogout"),
             label: 'Cerrar session',
             icon: Icons.logout,
             onTap: onTapLogout

@@ -19,10 +19,12 @@ class SortMenuMolecule extends StatelessWidget {
       itemBuilder: (context) => properties.expand((property) {
         return [
           PopupMenuItem(
+            key: Key('sort Item ${property}_asc'),
             value: "${property}_asc",
             child: Text("$property Ascending"),
           ),
           PopupMenuItem(
+            key: Key('sort Item ${property}_desc'),
             value: "${property}_desc",
             child: Text("$property Descending"),
           )

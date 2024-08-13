@@ -50,6 +50,8 @@ class BannerTrendingProductsMolecule extends StatelessWidget {
           ),
           OutlinedButton(
             onPressed: onTapButton,
+            key: const Key('homeBannerOffer'),
+
             style: OutlinedButton.styleFrom(
               side: const BorderSide(color: StoreColorsFoundation.onPrimaryColor),
               foregroundColor: Colors.white,

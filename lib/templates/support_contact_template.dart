@@ -31,6 +31,7 @@ class SupportContactTemplate extends StatelessWidget {
                 ),
                 const SizedBox(height: StoreSpacingFoundation.lg),
                 InputAtom(
+                  key: const Key("supportContactNameInput"),
                   iconData: Icons.person,
                   label: "Nombre",
                   controller: nameController,
@@ -44,6 +45,7 @@ class SupportContactTemplate extends StatelessWidget {
                 ),
                 const SizedBox(height: StoreSpacingFoundation.md),
                 InputAtom(
+                  key: const Key("supportContactEmailInput"),
                   iconData: Icons.email,
                   label: "Correo Electrónico",
                   controller: emailController,
@@ -63,6 +65,8 @@ class SupportContactTemplate extends StatelessWidget {
                 ),
                 const SizedBox(height: StoreSpacingFoundation.md),
                 InputAtom(
+                  key: const Key("supportContactSuBjectInput"),
+
                   iconData: Icons.subject,
                   label: "Asunto",
                   controller: subjectController,
@@ -76,6 +80,7 @@ class SupportContactTemplate extends StatelessWidget {
                 ),
                 const SizedBox(height: StoreSpacingFoundation.md),
                 TextAreaAtom(
+                  key: const Key("supportContactMessageInput"),
                   iconData: Icons.message,
                   label: "Mensaje",
                   controller: messageController,
@@ -90,6 +95,7 @@ class SupportContactTemplate extends StatelessWidget {
                 const SizedBox(height: StoreSpacingFoundation.lg),
                 Center(
                   child: ButtonAtom(
+                    key: const Key("supportContactButtonSend"),
                     label: "Enviar",
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {

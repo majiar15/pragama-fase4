@@ -45,6 +45,8 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InputAtom(
+              key: const Key('catalogSearchInput'),
+
               label: 'Search',
               controller: _searchController,
               onChanged: widget.onSearch,
@@ -58,6 +60,7 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RichText(
+                  key: const Key('CatalogCounter'),
                   text: TextSpan(
                       text: "${widget.productList.length} ",
                       style: const TextStyle(

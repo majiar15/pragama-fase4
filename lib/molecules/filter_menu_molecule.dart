@@ -15,7 +15,7 @@ class FilterMenuMolecule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<PopupMenuButtonState<String>> key = GlobalKey();
+    final GlobalKey<PopupMenuButtonState<String>> key = GlobalKey(debugLabel: 'filterMenuMolecule');
 
     return PopupMenuButton<String>(
       key: key, 
@@ -24,6 +24,7 @@ class FilterMenuMolecule extends StatelessWidget {
 
       },
       itemBuilder: (context) => filterCategories.map((category) => PopupMenuItem(
+        key: Key('filterItem $category'),
         value: category,
         child: Text(category),
       )).toList(),

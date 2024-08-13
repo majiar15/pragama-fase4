@@ -175,6 +175,7 @@ class ProductDetailTemplate extends StatelessWidget {
               Row(
                 children: [
                   ButtonAtom(
+                    key: const Key('productDetailAddCart'),
                     label: 'añadir al carrito',
                     onPressed: () => {onTapAddCart(
                       product.copyWith(price: discountedPrice)

@@ -20,8 +20,6 @@ class ForgotPasswordTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    print(size.width - (StoreSizesFoundation.paddingM * 2));
 
     return SafeArea(
       child: Scaffold(
@@ -49,6 +47,7 @@ class ForgotPasswordTemplate extends StatelessWidget {
                     height: StoreSpacingFoundation.lg,
                   ),
                   InputAtom(
+                    key: const Key('forgotPassInputEmail'),
                     iconData: Icons.email,
                     label: "Ingrese su Email",
                     controller: emailController,
@@ -96,6 +95,7 @@ class ForgotPasswordTemplate extends StatelessWidget {
                   ),
                   Center(
                     child: ButtonAtom(
+                      key: const Key('forgotPassButtonSend'),
                       label: "Enviar",
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {

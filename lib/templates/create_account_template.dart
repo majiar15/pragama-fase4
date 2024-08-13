@@ -57,6 +57,7 @@ class CreateAccountTemplate extends StatelessWidget {
                     height: StoreSpacingFoundation.lg,
                   ),
                   InputAtom(
+                    key: const Key('createAccountUsernameField'),
                     iconData: Icons.person,
                     label: "Usuario",
                     controller: userController,
@@ -72,6 +73,7 @@ class CreateAccountTemplate extends StatelessWidget {
                     height: StoreSpacingFoundation.md,
                   ),
                   InputAtom(
+                    key: const Key('createAccountPasswordField'),
                     iconData: Icons.lock,
                     label: "Contraseña",
                     controller: passwordController,
@@ -91,6 +93,7 @@ class CreateAccountTemplate extends StatelessWidget {
                     height: StoreSpacingFoundation.md,
                   ),
                   InputAtom(
+                    key: const Key('createAccountConfirmPasswordField'),
                     iconData: Icons.lock,
                     label: "Confirmar Contraseña",
                     controller: confirmPasswordController,
@@ -144,6 +147,7 @@ class CreateAccountTemplate extends StatelessWidget {
                   ),
                   Center(
                     child: ButtonAtom(
+                      key: const Key('createAccountRegisterButton'),
                       label: "Registrarse",
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {

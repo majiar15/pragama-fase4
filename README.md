@@ -594,3 +594,10 @@ FilterSortOrganism(
 ## Paginas
 Las paginas son instancias de las templates, es decir que las paginas serán creadas por el usuario final
 
+
+## cobertura
+Se realizaron pruebas de widgets, y se adjunta el informe de cobertura.
+
+Nota: Aunque los tests de tokens y foundations están incluidos, Lcov no los contabiliza en la cobertura debido a que estos son constructores privados.
+![imagen de covertura](/docs/coverage_test.png)
+

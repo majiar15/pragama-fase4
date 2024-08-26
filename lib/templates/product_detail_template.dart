@@ -10,6 +10,7 @@ class ProductDetailTemplate extends StatelessWidget {
   final void Function(DiscountedProduct product) onTapAddCart;
   final void Function(DiscountedProduct product) onTapSimilarProduct;
   final double originalPrice;
+  final AppBarMolecule appBar;
 
   const ProductDetailTemplate(
       {super.key,
@@ -18,6 +19,14 @@ class ProductDetailTemplate extends StatelessWidget {
       required this.onTapAddCart,
       required this.onTapSimilarProduct,
       this.originalPrice = 3000,
+      this.appBar = const AppBarMolecule(
+          title: Text(
+            "Detalle de producto",
+            style: TextStyle(
+                color: StoreColorsFoundation.textColor,
+                fontWeight: StoreTypographyFoundation.fontWeightBold),
+          ),
+        ),
       });
 
   double get discountedPrice {
@@ -34,14 +43,7 @@ class ProductDetailTemplate extends StatelessWidget {
     List<DiscountedProduct> productSimilar = productList.length >= 4 ? productList.sublist(0, 4) : [];
     final double buttonsWidths = screenSize.width * 0.4;
     return Scaffold(
-      appBar: AppBarMolecule(
-          title: Text(
-            StoreTextFoundation.productDetailAppBarTitle,
-            style: const TextStyle(
-                color: StoreColorsFoundation.textColor,
-                fontWeight: StoreTypographyFoundation.fontWeightBold),
-          ),
-        ),
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(StoreSizesFoundation.paddingM),

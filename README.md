@@ -40,6 +40,7 @@ Store Design System es una sistema de diseño para construir un ecomerce Flutter
 
    - [Templates](#templates)
    - [pages](#paginas)
+   - [cobertura](#cobertura)
 
 ## Instalación
 

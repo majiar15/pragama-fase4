@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, DiscountedProduct;
+import 'package:store_design_system/foundation/text_foundation.dart';
 import 'package:store_design_system/store_design_system.dart';
 class CatalogTemplate extends StatefulWidget {
   final List<DiscountedProduct> productList;
@@ -47,7 +48,7 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
             InputAtom(
               key: const Key('catalogSearchInput'),
 
-              label: 'Search',
+              label: StoreTextFoundation.catalogSearchLabel,
               controller: _searchController,
               onChanged: widget.onSearch,
               iconData: Icons.search,
@@ -68,10 +69,10 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
                         fontWeight: StoreTypographyFoundation.fontWeightBold,
                         color: StoreColorsFoundation.primaryColor,
                       ),
-                      children: const [
+                      children: [
                         TextSpan(
-                          text: "Productos",
-                          style: TextStyle(
+                          text: StoreTextFoundation.catalogProductCountText,
+                          style: const TextStyle(
                             fontWeight: StoreTypographyFoundation.fontWeightMedium,
                             color: StoreColorsFoundation.textColor,
                           ),
@@ -79,7 +80,7 @@ class _CatalogTemplateState extends State<CatalogTemplate> {
                       ]),
                 ),
                 FilterSortOrganism(
-                  filterCategories: [...widget.categories, "All"],
+                  filterCategories: [...widget.categories, StoreTextFoundation.catalogFilterAllOption],
                   onSortSelected: (sort){
                     widget.onSortSelected(sort);
                   },

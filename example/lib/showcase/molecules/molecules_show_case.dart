@@ -123,6 +123,9 @@ BannerTrendingProductsMolecule(
         BannerTrendingProductsMolecule(
           date: '2024-07-15',
           onTapButton: () {  },
+          title: 'Productos en oferta',
+          lastDate: 'Últimos Dias',
+          viewAll: 'ver Todas',
         ),
       ],
     ),

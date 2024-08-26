@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_design_system/foundation/text_foundation.dart';
 import 'package:store_design_system/store_design_system.dart';
 import 'package:flutter_models_commons/flutter_models_commons.dart'
     show  DiscountedProduct;
@@ -8,7 +9,6 @@ class ProductDetailTemplate extends StatelessWidget {
   final List<DiscountedProduct> productList;
   final void Function(DiscountedProduct product) onTapAddCart;
   final void Function(DiscountedProduct product) onTapSimilarProduct;
-  final AppBarMolecule appBar;
   final double originalPrice;
 
   const ProductDetailTemplate(
@@ -18,14 +18,7 @@ class ProductDetailTemplate extends StatelessWidget {
       required this.onTapAddCart,
       required this.onTapSimilarProduct,
       this.originalPrice = 3000,
-      this.appBar =  const AppBarMolecule(
-          title: Text(
-            'Detalle de producto',
-            style: TextStyle(
-                color: StoreColorsFoundation.textColor,
-                fontWeight: StoreTypographyFoundation.fontWeightBold),
-          ),
-        ),});
+      });
 
   double get discountedPrice {
     if (product.discountPercentage > 0 &&
@@ -41,7 +34,14 @@ class ProductDetailTemplate extends StatelessWidget {
     List<DiscountedProduct> productSimilar = productList.length >= 4 ? productList.sublist(0, 4) : [];
     final double buttonsWidths = screenSize.width * 0.4;
     return Scaffold(
-      appBar: appBar,
+      appBar: AppBarMolecule(
+          title: Text(
+            StoreTextFoundation.productDetailAppBarTitle,
+            style: const TextStyle(
+                color: StoreColorsFoundation.textColor,
+                fontWeight: StoreTypographyFoundation.fontWeightBold),
+          ),
+        ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(StoreSizesFoundation.paddingM),
@@ -150,9 +150,9 @@ class ProductDetailTemplate extends StatelessWidget {
               const SizedBox(
                 height: StoreSpacingFoundation.md,
               ),
-              const Text(
-                "Detalles del producto",
-                style: TextStyle(
+              Text(
+                StoreTextFoundation.productDetailProductDetails,
+                style: const TextStyle(
                     fontSize: StoreTypographyFoundation.fontSizeH4,
                     fontWeight: StoreTypographyFoundation.fontWeightMedium,
                     color: StoreColorsFoundation.textColor),
@@ -176,7 +176,7 @@ class ProductDetailTemplate extends StatelessWidget {
                 children: [
                   ButtonAtom(
                     key: const Key('productDetailAddCart'),
-                    label: 'añadir al carrito',
+                    label: StoreTextFoundation.productDetailAddToCartButton,
                     onPressed: () => {onTapAddCart(
                       product.copyWith(price: discountedPrice)
                     )},
@@ -188,9 +188,9 @@ class ProductDetailTemplate extends StatelessWidget {
               const SizedBox(
                 height: StoreSpacingFoundation.md,
               ),
-              const Text(
-                "Productos Similares",
-                style: TextStyle(
+              Text(
+                StoreTextFoundation.productDetailSimilarProducts,
+                style: const  TextStyle(
                   fontSize: StoreTypographyFoundation.fontSizeH3,
                   fontWeight: StoreTypographyFoundation.fontWeightBold,
                 ),
@@ -203,7 +203,6 @@ class ProductDetailTemplate extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: productSimilar.length,
                 itemBuilder: (ctx, i) {
-                  print("ejecutando");
                   return CardOrganism(
                     imageUrl: productSimilar[i].image,
                     title: productSimilar[i].title,

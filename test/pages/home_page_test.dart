@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'package:store_design_system/pages/home_page.dart';
-import 'package:store_design_system/pages/support_contact_page.dart';
 import 'package:store_design_system/store_design_system.dart';
 
 void main() {
@@ -30,7 +29,7 @@ void main() {
 
     testWidgets('Drawer opens and closes', (WidgetTester tester) async {
       await mockNetworkImagesFor(() async {
-        await tester.pumpWidget(MaterialApp(home: HomePage()));
+        await tester.pumpWidget(const MaterialApp(home: HomePage()));
 
         expect(find.byType(DrawerOrganism), findsNothing);
 

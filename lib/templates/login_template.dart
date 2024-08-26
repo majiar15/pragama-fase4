@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_design_system/foundation/text_foundation.dart';
 import 'package:store_design_system/store_design_system.dart';
 
 class LoginTemplate extends StatelessWidget {
@@ -24,9 +25,8 @@ class LoginTemplate extends StatelessWidget {
   });
 
   static void _defaultOnChange(String text) {}
-
+  final pageName = 'login';
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,15 +44,15 @@ class LoginTemplate extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "¡Bienvenido",
-                    style: TextStyle(
+                  Text(
+                    StoreTextFoundation.loginWelcome,
+                    style: const TextStyle(
                         fontSize: StoreTypographyFoundation.fontSizeH1,
                         fontWeight: StoreTypographyFoundation.fontWeightBold),
                   ),
-                  const Text(
-                    "De nuevo!",
-                    style: TextStyle(
+                  Text(
+                    StoreTextFoundation.loginWelcomeBack,
+                    style: const TextStyle(
                         fontSize: StoreTypographyFoundation.fontSizeH1,
                         fontWeight: StoreTypographyFoundation.fontWeightBold),
                   ),
@@ -62,11 +62,11 @@ class LoginTemplate extends StatelessWidget {
                   InputAtom(
                     key: const Key('loginUsernameField'),
                     iconData: Icons.person,
-                    label: "Usuario",
+                    label: StoreTextFoundation.createAccountUsernameLabel,
                     controller: userController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor ingrese su nombre de usuario';
+                        return StoreTextFoundation.createAccountUsernameValidatorEmpty;
                       }
                       return null;
                     },
@@ -78,15 +78,15 @@ class LoginTemplate extends StatelessWidget {
                   InputAtom(
                     key: const Key('loginPasswordField'),
                     iconData: Icons.lock,
-                    label: "Contraseña",
+                    label: StoreTextFoundation.loginPassword,
                     controller: passwordController,
                     isPassword: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor ingrese su contraseña';
+                        return StoreTextFoundation.loginPasswordValidationEmpty;
                       }
                       if (value.length < 6) {
-                        return 'La contraseña debe tener al menos 6 caracteres';
+                        return StoreTextFoundation.loginPasswordValidationShort;
                       }
                       return null;
                     },
@@ -100,10 +100,10 @@ class LoginTemplate extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: onTapForgotPassword,
-                        child: const Text(
-                          key: Key('loginTextForgotPassword'),
-                          "¿Has olvidado tu contraseña?",
-                          style: TextStyle(
+                        child: Text(
+                          key: const Key('loginTextForgotPassword'),
+                          StoreTextFoundation.loginForgotPassword,
+                          style: const TextStyle(
                               fontSize: StoreTypographyFoundation.fontSizeH5,
                               color: StoreColorsFoundation.primaryColor),
                         ),
@@ -116,7 +116,7 @@ class LoginTemplate extends StatelessWidget {
                   Center(
                     child: ButtonAtom(
                       key: const Key('loginOnTapLogin'),
-                      label: "Ingresar",
+                      label: StoreTextFoundation.loginButtonLabel,
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {
                           onTapLogin();
@@ -131,18 +131,18 @@ class LoginTemplate extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        "Crear una cuenta ",
-                        style: TextStyle(
+                      Text(
+                        StoreTextFoundation.loginCreateAccount,
+                        style: const TextStyle(
                           fontSize: StoreTypographyFoundation.fontSizeH5,
                         ),
                       ),
                       GestureDetector(
                         onTap: onTapSignUp,
-                        child: const Text(
-                          key: Key('loginTextRegister'),
-                          "Registrarse",
-                          style: TextStyle(
+                        child: Text(
+                          key: const Key('loginTextRegister'),
+                          StoreTextFoundation.loginRegister,
+                          style: const TextStyle(
                               color: StoreColorsFoundation.primaryColor,
                               fontSize: StoreTypographyFoundation.fontSizeH5,
                               decoration: TextDecoration.underline),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/store_design_system.dart';
+import 'package:store_design_system/foundation/text_foundation.dart' show StoreTextFoundation;
 import 'package:flutter_models_commons/flutter_models_commons.dart'
     show CartUIModel;
 
@@ -42,17 +43,18 @@ class CartTemplateState extends State<CartTemplate> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: const AppBarMolecule(
-            title: Text("CARRITO",
-                style: TextStyle(
+        appBar: AppBarMolecule(
+            title: Text(
+                StoreTextFoundation.cartAppBarTitle,
+                style: const TextStyle(
                   color: StoreColorsFoundation.textColor,
                   fontSize: StoreTypographyFoundation.fontSizeH3,
                 ))),
         body: widget.cart.products.isEmpty
-            ? const Center(
+            ? Center(
                 child: Text(
-                  '¡Agrega Productos al carrito!',
-                  style: TextStyle(
+                  StoreTextFoundation.cartEmptyCartMessage,
+                  style: const TextStyle(
                     color: StoreColorsFoundation.textColor,
                     fontSize: StoreTypographyFoundation.fontSizeH3,
                   ),
@@ -69,6 +71,8 @@ class CartTemplateState extends State<CartTemplate> {
                           product: product,
                           onIncrease: () => _increaseQuantity(index),
                           onDecrease: () => _decreaseQuantity(index),
+                          priceLabel: StoreTextFoundation.cartPriceLabel,
+                          totalLabel: StoreTextFoundation.cartTotalPriceLabel,
                         );
                       },
                     ),
@@ -79,7 +83,7 @@ class CartTemplateState extends State<CartTemplate> {
                     child: Column(
                       children: [
                         Text(
-                          'Total de la Compra: \$${_calculateTotal().toStringAsFixed(2)}',
+                          '${StoreTextFoundation.cartTotalPurchaseLabel}: \$${_calculateTotal().toStringAsFixed(2)}',
                           style: const TextStyle(
                             fontSize: StoreTypographyFoundation.fontSizeH4,
                             fontWeight: FontWeight.bold,
@@ -88,7 +92,7 @@ class CartTemplateState extends State<CartTemplate> {
                         const SizedBox(height: StoreSpacingFoundation.s),
                         ButtonAtom(
                           key: const Key("cartButtonBuy"),
-                            label: 'Realizar Compra',
+                            label: StoreTextFoundation.cartBuyButtonLabel,
                             onPressed: widget.onTapBuyNow),
                       ],
                     ),

@@ -5,9 +5,14 @@ import 'package:example/showcase/organisms/organisms_show_case.dart';
 import 'package:example/showcase/templates/template_show_case.dart';
 import 'package:flutter/material.dart';
 import 'package:store_design_system/store_design_system.dart';
+import 'package:store_design_system/config.dart';
 import 'showcase/pages/pages_show_case.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Config.instance.load('assets/config.json');
+
+
   runApp(const MyApp());
 }
 

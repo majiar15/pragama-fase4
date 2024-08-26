@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/foundations.dart';
 class BannerTrendingProductsMolecule extends StatelessWidget {
+  final String title;
+  final String lastDate;
+  final String viewAll;
   final String date;
   final void Function() onTapButton;
 
   const BannerTrendingProductsMolecule({
     super.key,
     required this.date,
-    required this.onTapButton
+    required this.title,
+    required this.lastDate,
+    required this.viewAll,
+    required this.onTapButton,
   });
 
   @override
@@ -24,9 +30,9 @@ class BannerTrendingProductsMolecule extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Productos en Oferta',
-                style: TextStyle(
+              Text(
+                title,
+                style: const TextStyle(
                   color: StoreColorsFoundation.onPrimaryColor,
                   fontSize: StoreTypographyFoundation.fontSizeH4,
                   fontWeight: FontWeight.bold,
@@ -38,7 +44,7 @@ class BannerTrendingProductsMolecule extends StatelessWidget {
                   const Icon(Icons.calendar_today, color:StoreColorsFoundation.onPrimaryColor),
                   const SizedBox(width: StoreSpacingFoundation.s),
                   Text(
-                    'Ultimo Dia $date',
+                    '$lastDate $date',
                     style: const TextStyle(
                       color: StoreColorsFoundation.onPrimaryColor,
                       fontSize: StoreTypographyFoundation.fontSizeH5,
@@ -56,10 +62,10 @@ class BannerTrendingProductsMolecule extends StatelessWidget {
               side: const BorderSide(color: StoreColorsFoundation.onPrimaryColor),
               foregroundColor: Colors.white,
             ),
-            child: const Row(
+            child: Row(
               children: [
-                Text('View all'),
-                Icon(Icons.arrow_forward, color: StoreColorsFoundation.onPrimaryColor),
+                Text(viewAll),
+                const Icon(Icons.arrow_forward, color: StoreColorsFoundation.onPrimaryColor),
               ],
             ),
           ),

@@ -1,10 +1,4 @@
-import 'package:example/showcase/pages/cart_page_show_case.dart';
-import 'package:example/showcase/pages/catalog_page_show_case.dart';
-import 'package:example/showcase/pages/contact_support_show_case.dart';
-import 'package:example/showcase/pages/create_account_page_show_case.dart';
-import 'package:example/showcase/pages/forgot_password_page_showcase.dart';
-import 'package:example/showcase/pages/home_page_show_case.dart';
-import 'package:example/showcase/pages/product_detail_page_show_case.dart';
+
 import 'package:example/showcase/templates/cart_template_show_case.dart';
 import 'package:example/showcase/templates/catalog_template_show_case.dart';
 import 'package:example/showcase/templates/contact_support_template_show_case.dart';
@@ -14,9 +8,8 @@ import 'package:example/showcase/templates/home_template_show_case.dart';
 import 'package:example/showcase/templates/offert_template_show_case.dart';
 import 'package:example/showcase/templates/product_detail_template_show_case.dart';
 import 'package:flutter/material.dart';
-import 'package:store_design_system/store_design_system.dart';
 import 'login_template_show_case.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
+import 'package:flutter_models_commons/flutter_models_commons.dart' show DiscountedProduct, Rating;
 
 class TemplateShowCase extends StatefulWidget {
   const TemplateShowCase({super.key});
@@ -78,7 +71,7 @@ class TemplateShowCaseState extends State<TemplateShowCase> {
               MaterialPageRoute(
                 builder: (context) => const ProductDetailTemplateShowCase(),
                 settings: RouteSettings(
-                  arguments: ProductModel(
+                  arguments: DiscountedProduct(
                       id: 5,
                       title:
                           "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",

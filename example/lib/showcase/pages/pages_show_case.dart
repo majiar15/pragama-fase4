@@ -7,9 +7,7 @@ import 'package:example/showcase/pages/home_page_show_case.dart';
 import 'package:example/showcase/pages/offer_page_show_case.dart';
 import 'package:example/showcase/pages/product_detail_page_show_case.dart';
 import 'package:flutter/material.dart';
-import 'package:store_design_system/pages/offer_page.dart';
-import 'package:store_design_system/store_design_system.dart';
-import 'package:flutter_models_commons/flutter_models_commons.dart' show ProductModel, Rating;
+import 'package:flutter_models_commons/flutter_models_commons.dart' show DiscountedProduct, Rating;
 
 import 'login_page_show_case.dart';
 
@@ -21,23 +19,9 @@ class PageShowcase extends StatefulWidget {
 }
 
 class _PageShowcaseState extends State<PageShowcase> {
-  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    const List<Widget> _widgetOptions = <Widget>[
-      Text('Home Page',
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-      Text('Search Page',
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-      Text('Profile Page',
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    ];
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pages Showcase'),
@@ -85,7 +69,7 @@ class _PageShowcaseState extends State<PageShowcase> {
               MaterialPageRoute(
                 builder: (context) => const ProductDetailPageShowCase(),
                 settings: RouteSettings(
-                  arguments: ProductModel(
+                  arguments: DiscountedProduct(
                       id: 5,
                       title:
                           "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",

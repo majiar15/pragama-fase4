@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_design_system/foundation/text_foundation.dart';
 import 'package:store_design_system/store_design_system.dart';
 
 class CreateAccountTemplate extends StatelessWidget {
@@ -41,15 +42,15 @@ class CreateAccountTemplate extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Crear una",
-                    style: TextStyle(
+                  Text(
+                    StoreTextFoundation.createAccountTitleLine1,
+                    style: const TextStyle(
                         fontSize: StoreTypographyFoundation.fontSizeH1,
                         fontWeight: StoreTypographyFoundation.fontWeightBold),
                   ),
-                  const Text(
-                    "cuenta",
-                    style: TextStyle(
+                  Text(
+                    StoreTextFoundation.createAccountTitleLine2,
+                    style: const TextStyle(
                         fontSize: StoreTypographyFoundation.fontSizeH1,
                         fontWeight: StoreTypographyFoundation.fontWeightBold),
                   ),
@@ -59,11 +60,11 @@ class CreateAccountTemplate extends StatelessWidget {
                   InputAtom(
                     key: const Key('createAccountUsernameField'),
                     iconData: Icons.person,
-                    label: "Usuario",
+                    label: StoreTextFoundation.createAccountUsernameLabel,
                     controller: userController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor ingrese su nombre de usuario';
+                        return StoreTextFoundation.createAccountUsernameValidatorEmpty;
                       }
                       return null;
                     },
@@ -75,15 +76,15 @@ class CreateAccountTemplate extends StatelessWidget {
                   InputAtom(
                     key: const Key('createAccountPasswordField'),
                     iconData: Icons.lock,
-                    label: "Contraseña",
+                    label: StoreTextFoundation.createAccountPasswordLabel,
                     controller: passwordController,
                     isPassword: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor ingrese una contraseña';
+                        return StoreTextFoundation.createAccountPasswordValidatorEmpty;
                       }
                       if (value.length < 6) {
-                        return 'La contraseña debe tener al menos 6 caracteres';
+                        return StoreTextFoundation.createAccountPasswordValidatorShort;
                       }
                       return null;
                     },
@@ -95,15 +96,15 @@ class CreateAccountTemplate extends StatelessWidget {
                   InputAtom(
                     key: const Key('createAccountConfirmPasswordField'),
                     iconData: Icons.lock,
-                    label: "Confirmar Contraseña",
+                    label: StoreTextFoundation.createAccountConfirmPasswordLabel,
                     controller: confirmPasswordController,
                     isPassword: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor confirme su contraseña';
+                        return StoreTextFoundation.createAccountConfirmPasswordValidatorEmpty;
                       }
                       if (value != passwordController.text) {
-                        return 'Las contraseñas no coinciden';
+                        return StoreTextFoundation.createAccountConfirmPasswordValidatorMismatch;
                       }
                       return null;
                     },
@@ -118,23 +119,22 @@ class CreateAccountTemplate extends StatelessWidget {
                       SizedBox(
                         width: screenSize.width * 0.7,
                         child: RichText(
-                          text: const TextSpan(
-                            text: 'Al hacer clic en el botón ',
-                            style: TextStyle(
+                          text:  TextSpan(
+                            text: StoreTextFoundation.createAccountRegisterTermsPrefix,
+                            style: const TextStyle(
                               color: StoreColorsFoundation.textColor,
                               fontSize: StoreTypographyFoundation.fontSizeH5,
                             ),
                             children: <TextSpan>[
                               TextSpan(
-                                text: 'Registrarse',
-                                style: TextStyle(
+                                text: StoreTextFoundation.createAccountRegisterTermsButton,
+                                style: const TextStyle(
                                   color: StoreColorsFoundation.primaryColor,
                                   fontWeight: StoreTypographyFoundation.fontWeightBold,
                                 ),
                               ),
                               TextSpan(
-                                text:
-                                    ', estás de acuerdo con la oferta pública',
+                                text: StoreTextFoundation.createAccountRegisterTermsSuffix,
                               ),
                             ],
                           ),

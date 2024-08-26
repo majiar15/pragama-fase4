@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_design_system/store_design_system.dart';
+import 'package:store_design_system/foundation/text_foundation.dart';
 
 class SupportContactTemplate extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
@@ -22,9 +23,9 @@ class SupportContactTemplate extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Ponte en contacto con nosotros',
-                  style: TextStyle(
+                Text(
+                  StoreTextFoundation.supportContactTitle,
+                  style: const TextStyle(
                     fontSize: StoreTypographyFoundation.fontSizeH2,
                     fontWeight: StoreTypographyFoundation.fontWeightBold,
                   ),
@@ -33,12 +34,12 @@ class SupportContactTemplate extends StatelessWidget {
                 InputAtom(
                   key: const Key("supportContactNameInput"),
                   iconData: Icons.person,
-                  label: "Nombre",
+                  label: StoreTextFoundation.supportContactNameLabel,
                   controller: nameController,
                   onChanged: (String value) {},
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Por favor ingrese su nombre';
+                      return StoreTextFoundation.supportContactNameValidator;
                     }
                     return null;
                   },
@@ -47,18 +48,18 @@ class SupportContactTemplate extends StatelessWidget {
                 InputAtom(
                   key: const Key("supportContactEmailInput"),
                   iconData: Icons.email,
-                  label: "Correo Electrónico",
+                  label: StoreTextFoundation.supportContactEmailLabel,
                   controller: emailController,
                   onChanged: (String value) {},
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Por favor ingrese su correo electrónico';
+                      return StoreTextFoundation.supportContactEmailValidatorEmpty;
                     }
                     String pattern =
                         r'^[a-zA-Z0-9.a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9]+\.[a-zA-Z]+';
                     RegExp regex = RegExp(pattern);
                     if (!regex.hasMatch(value)) {
-                      return 'Por favor ingrese un correo electrónico válido';
+                      return StoreTextFoundation.supportContactEmailValidatorInvalid;
                     }
                     return null;
                   },
@@ -68,12 +69,12 @@ class SupportContactTemplate extends StatelessWidget {
                   key: const Key("supportContactSuBjectInput"),
 
                   iconData: Icons.subject,
-                  label: "Asunto",
+                  label: StoreTextFoundation.supportContactSubjectLabel,
                   controller: subjectController,
                   onChanged: (String value) {},
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Por favor ingrese un asunto';
+                      return StoreTextFoundation.supportContactSubjectValidator;
                     }
                     return null;
                   },
@@ -82,12 +83,12 @@ class SupportContactTemplate extends StatelessWidget {
                 TextAreaAtom(
                   key: const Key("supportContactMessageInput"),
                   iconData: Icons.message,
-                  label: "Mensaje",
+                  label: StoreTextFoundation.supportContactMessageLabel,
                   controller: messageController,
                   maxLines: 5,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Por favor ingrese un mensaje';
+                      return StoreTextFoundation.supportContactMessageValidator;
                     }
                     return null;
                   },
@@ -96,13 +97,13 @@ class SupportContactTemplate extends StatelessWidget {
                 Center(
                   child: ButtonAtom(
                     key: const Key("supportContactButtonSend"),
-                    label: "Enviar",
+                    label: StoreTextFoundation.supportContactSendButton,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         DialogAtom(
-                          title: "Contacto",
-                          content: "Se ha enviado un correo con su mensaje",
-                          rightButtonText: "Cerrar",
+                          title: StoreTextFoundation.supportContactDialogTitle,
+                          content: StoreTextFoundation.supportContactDialogContent,
+                          rightButtonText: StoreTextFoundation.supportContactDialogCloseButton,
                           onRightButtonPressed: () {
                             nameController.text = "";
                             emailController.text = "";
@@ -118,31 +119,31 @@ class SupportContactTemplate extends StatelessWidget {
                 const SizedBox(height: StoreSpacingFoundation.xl),
                 const Divider(),
                 const SizedBox(height: StoreSpacingFoundation.lg),
-                const Text(
-                  'Información de Contacto',
-                  style: TextStyle(
+                Text(
+                  StoreTextFoundation.supportContactContactInformation,
+                  style: const TextStyle(
                     fontSize: StoreTypographyFoundation.fontSizeH2,
                     fontWeight: StoreTypographyFoundation.fontWeightBold,
                   ),
                 ),
                 const SizedBox(height: StoreSpacingFoundation.md),
-                const Text(
-                  'Teléfono: +57 300 5524028',
-                  style: TextStyle(
+                Text(
+                  StoreTextFoundation.supportContactPhone,
+                  style: const TextStyle(
                     fontSize: StoreTypographyFoundation.fontSizeH5,
                   ),
                 ),
                 const SizedBox(height: StoreSpacingFoundation.s),
-                const Text(
-                  'Correo Electrónico: majiar11@gmail.com',
-                  style: TextStyle(
+                Text(
+                  StoreTextFoundation.supportContactEmail,
+                  style: const TextStyle(
                     fontSize: StoreTypographyFoundation.fontSizeH5,
                   ),
                 ),
                 const SizedBox(height: StoreSpacingFoundation.s),
-                const Text(
-                  'Dirección: Kra 35 # 24 - 133, Barranquilla, Colombia',
-                  style: TextStyle(
+                Text(
+                  StoreTextFoundation.supportContactAddress,
+                  style: const TextStyle(
                     fontSize: StoreTypographyFoundation.fontSizeH5,
                   ),
                 ),

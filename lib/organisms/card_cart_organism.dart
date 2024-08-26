@@ -5,12 +5,16 @@ class CardCartOrganism extends StatelessWidget {
   final ProductCartUIModel product;
   final VoidCallback onIncrease;
   final VoidCallback onDecrease;
+  final String priceLabel;
+  final String totalLabel;
 
   const CardCartOrganism({
     super.key,
     required this.product,
     required this.onIncrease,
     required this.onDecrease,
+    required this.priceLabel,
+    required this.totalLabel,
   });
 
   @override
@@ -35,7 +39,7 @@ class CardCartOrganism extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Precio: \$${product.price.toStringAsFixed(2)}',
+                    '$priceLabel: \$${product.price.toStringAsFixed(2)}',
                       style: const TextStyle(
                         fontSize: StoreTypographyFoundation.fontSizeH5
                       )
@@ -57,7 +61,7 @@ class CardCartOrganism extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        'Total: \$${(product.price * product.quantity).toStringAsFixed(2)}',
+                        '$totalLabel: \$${(product.price * product.quantity).toStringAsFixed(2)}',
                         style: const  TextStyle(
                           fontWeight: FontWeight.bold,
                         ),

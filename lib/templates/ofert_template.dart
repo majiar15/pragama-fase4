@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_models_commons/flutter_models_commons.dart'
+
     show DiscountedProduct;
 import 'package:store_design_system/store_design_system.dart';
-
+import 'package:store_design_system/foundation/text_foundation.dart' show StoreTextFoundation;
 class OfferTemplate extends StatefulWidget {
   final List<DiscountedProduct> productList;
   final List<DiscountedProduct> productsSimilar;
@@ -31,10 +32,10 @@ class OfferTemplateState extends State<OfferTemplate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarMolecule(
+      appBar: AppBarMolecule(
         title: Text(
-          "OFERTAS",
-          style: TextStyle(
+          StoreTextFoundation.offerTitle,
+          style: const TextStyle(
             color: StoreColorsFoundation.textColor,
             fontSize: StoreTypographyFoundation.fontSizeH3,
           ),

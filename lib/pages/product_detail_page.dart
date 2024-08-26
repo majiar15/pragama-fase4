@@ -137,7 +137,9 @@ class ProductDetailPage extends StatelessWidget {
           rating: Rating(rate: 2.9, count: 250)),
     ];
     final productData =
-        ModalRoute.of(context)?.settings.arguments as DiscountedProduct;
+        ModalRoute.of(context)?.settings.arguments as DiscountedProduct? ?? productList[0];
+
+    
     return ProductDetailTemplate(
       onTapAddCart: (product) {},
       product: productData,

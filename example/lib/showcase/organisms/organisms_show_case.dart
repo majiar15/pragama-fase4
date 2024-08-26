@@ -73,6 +73,8 @@ CardCartOrganism(
         ),
         onIncrease: () {},
         onDecrease: () {},
+        priceLabel: 'Precio',
+        totalLabel: 'Total',
       ),
       codeSnippet: codeSnippet,
     );

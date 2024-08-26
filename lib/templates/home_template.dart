@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_models_commons/flutter_models_commons.dart' show DiscountedProduct;
+import 'package:store_design_system/foundation/text_foundation.dart';
 
 import 'package:store_design_system/store_design_system.dart';
 class HomeTemplate extends StatefulWidget {
@@ -34,8 +35,10 @@ class HomeTemplate extends StatefulWidget {
 class _HomeTemplateState extends State<HomeTemplate> {
   late List<DiscountedProduct> firstPartLst;
   late List<DiscountedProduct> secondPartList;
+
   @override
   void initState() {
+    
     super.initState();
     firstPartLst = widget.productList.length >= 4 ? widget.productList.sublist(0, 4) : [];
     secondPartList = widget.productList.length >= 4 ? widget.productList.sublist(4) : [];
@@ -43,18 +46,17 @@ class _HomeTemplateState extends State<HomeTemplate> {
   get getGreeting {
     final hour = DateTime.now().hour;
     if (hour < 12) {
-      return 'Buenos días';
+      return StoreTextFoundation.homeGreetingMorning;
     } else if (hour < 18) {
-      return 'Buenas tardes';
+      return StoreTextFoundation.homeGreetingAfternoon;
     } else {
-      return 'Buenas noches';
+      return StoreTextFoundation.homeGreetingEvening;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(StoreSizesFoundation.paddingM),
@@ -71,9 +73,9 @@ class _HomeTemplateState extends State<HomeTemplate> {
             const SizedBox(
               height: StoreSpacingFoundation.sl,
             ),
-            const Text(
-              'Explora Nuestros productos relevantes',
-              style: TextStyle(
+            Text(
+              StoreTextFoundation.homeExploreRelevantProducts,
+              style: const TextStyle(
                 fontSize: StoreTypographyFoundation.fontSizeH5,
                 fontWeight: StoreTypographyFoundation.fontWeightMedium,
               ),
@@ -110,8 +112,10 @@ class _HomeTemplateState extends State<HomeTemplate> {
               height: StoreSpacingFoundation.lg,
             ),
             BannerTrendingProductsMolecule(
-              
-              date: "15/05/2024",
+              date: getDateOffer(),
+              lastDate: StoreTextFoundation.homeTrendingProductsBannerLastDay,
+              title: StoreTextFoundation.homeTrendingProductsBannerProductsInOffer,
+              viewAll: StoreTextFoundation.homeTrendingProductsBannerButtonViewAll,
               onTapButton: widget.onTapTrendingProducts,
             ),
             const SizedBox(
@@ -175,5 +179,16 @@ class _HomeTemplateState extends State<HomeTemplate> {
         ),
       ),
     );
+  }
+
+  String getDateOffer() {
+    DateTime today = DateTime.now();
+    DateTime futureDate = today.add(const Duration(days: 1));
+    
+    String day = futureDate.day.toString().padLeft(2, '0');
+    String month = futureDate.month.toString().padLeft(2, '0');
+    String year = futureDate.year.toString();
+    
+    return  "$day/$month/$year";
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_design_system/foundation/sizes_foundation.dart';
+import 'package:store_design_system/foundation/text_foundation.dart';
 import 'package:store_design_system/store_design_system.dart';
 
 class ForgotPasswordTemplate extends StatelessWidget {
@@ -31,15 +31,15 @@ class ForgotPasswordTemplate extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "¿Olvidó su",
-                    style: TextStyle(
+                  Text(
+                    StoreTextFoundation.forgotPasswordTitleLine1,
+                    style: const TextStyle(
                         fontSize: StoreTypographyFoundation.fontSizeH1,
                         fontWeight: StoreTypographyFoundation.fontWeightBold),
                   ),
-                  const Text(
-                    "contraseña?",
-                    style: TextStyle(
+                  Text(
+                    StoreTextFoundation.forgotPasswordTitleLine2,
+                    style: const TextStyle(
                         fontSize: StoreTypographyFoundation.fontSizeH1,
                         fontWeight: StoreTypographyFoundation.fontWeightBold),
                   ),
@@ -49,14 +49,14 @@ class ForgotPasswordTemplate extends StatelessWidget {
                   InputAtom(
                     key: const Key('forgotPassInputEmail'),
                     iconData: Icons.email,
-                    label: "Ingrese su Email",
+                    label: StoreTextFoundation.forgotPasswordInputLabel,
                     controller: emailController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor ingrese su correo electrónico';
+                        return StoreTextFoundation.forgotPasswordEmptyEmailValidator;
                       }
                       if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                        return 'Por favor ingrese un correo electrónico válido';
+                        return StoreTextFoundation.forgotPasswordInvalidEmailValidator;
                       }
                       return null;
                     },
@@ -70,17 +70,16 @@ class ForgotPasswordTemplate extends StatelessWidget {
                     children: [
                       Expanded(
                         child: RichText(
-                          text: const TextSpan(
-                            text: '*',
-                            style: TextStyle(
+                          text: TextSpan(
+                            text: StoreTextFoundation.forgotPasswordNoteFeedback1,
+                            style: const TextStyle(
                               color: StoreColorsFoundation.primaryColor,
                               fontSize: StoreTypographyFoundation.fontSizeH5,
                             ),
                             children: <TextSpan>[
                               TextSpan(
-                                text:
-                                    ' Le enviaremos un mensaje para configurar o restablecer su nueva contraseña',
-                                style: TextStyle(
+                                text:StoreTextFoundation.forgotPasswordNoteFeedback2,
+                                style: const TextStyle(
                                   color: StoreColorsFoundation.textColor,
                                 ),
                               ),
@@ -96,7 +95,7 @@ class ForgotPasswordTemplate extends StatelessWidget {
                   Center(
                     child: ButtonAtom(
                       key: const Key('forgotPassButtonSend'),
-                      label: "Enviar",
+                      label: StoreTextFoundation.forgotPasswordButtonSendLabel,
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {
                           onSubmit();
